@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 const whiteColor = Colors.white;
 const primary = Color(0xFF0C3452);
 const black = Colors.black;
-
+const grey = Colors.grey;
 
 //image
 
@@ -51,6 +51,8 @@ const kheight100 = SizedBox(
 
 const loginText = Text('Login',style: TextStyle(fontSize: 32, fontWeight: FontWeight.w700));
 const forgot = Text("Forgot password?",style: TextStyle(color: primary, fontWeight: FontWeight.bold),);
-
+const forgotpassword = Text('Forgot Password ?',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 25,color: primary),);
+const forgotpassword1 =Text('      Enter the email address\n associated with your account.',style: TextStyle(fontSize: 20,color: primary),);
+const forgotpassword2 = Text('we will email you a link to reset\n                your passowrd.',style: TextStyle(fontSize: 16,color: grey),);
 
 

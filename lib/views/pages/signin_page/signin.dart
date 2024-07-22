@@ -4,6 +4,7 @@ import 'package:frenzy/utils/validation.dart';
 import 'package:frenzy/views/pages/common_widgets/class_widgets/textfield.dart';
 import 'package:frenzy/views/pages/common_widgets/function_widgets/custom_button.dart';
 import 'package:frenzy/views/pages/common_widgets/function_widgets/login_to_signup_text.dart';
+import 'package:frenzy/views/pages/signin_page/forgotpassword/forgot_password_screen.dart';
 
 class SigninPage extends StatelessWidget {
   SigninPage({super.key});
@@ -43,17 +44,23 @@ class SigninPage extends StatelessWidget {
                       controller: _userNameController,
                     ),
                     kheight20,
-                    CustomTextField(
+                    PasswordTextFieldState(
                       hintText: 'password',
-                      validator: validateUsername,
                       controller: _passwordController,
-                    ),
+                      validator: validatePassword,
+                      ),
                     kheight,
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        ForgotPasswordScreen()));
+                          },
                           child: forgot,
                         ),
                       ],
@@ -61,8 +68,7 @@ class SigninPage extends StatelessWidget {
                     CustomButton(
                       media: MediaQuery.of(context).size,
                       buttonText: "Login",
-                      onPressed: () {
-                      },
+                      onPressed: () {},
                       color: primary,
                     ),
                     kheight,
@@ -72,20 +78,18 @@ class SigninPage extends StatelessWidget {
                       children: [
                         SizedBox(
                           height: size.height * 0.05,
-                          child:  Image.asset(google),
-                          
+                          child: Image.asset(google),
                         ),
                         const Text('Sign In With Google?',
-                        style: TextStyle(color: primary))
+                            style: TextStyle(color: primary))
                       ],
                     ),
                     loginAndSignUpRow(
-                      context: context, 
-                      preText: 'New User? Join Us Today! ', 
-                      buttonText: 'Register here', 
-                      onPressed: ()async{},
-                      ),
-                      
+                      context: context,
+                      preText: 'New User? Join Us Today! ',
+                      buttonText: 'Register here',
+                      onPressed: () async {},
+                    ),
                   ],
                 ),
               ),
