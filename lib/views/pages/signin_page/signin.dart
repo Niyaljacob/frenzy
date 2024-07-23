@@ -4,7 +4,10 @@ import 'package:frenzy/utils/validation.dart';
 import 'package:frenzy/views/pages/common_widgets/class_widgets/textfield.dart';
 import 'package:frenzy/views/pages/common_widgets/function_widgets/custom_button.dart';
 import 'package:frenzy/views/pages/common_widgets/function_widgets/login_to_signup_text.dart';
+import 'package:frenzy/views/pages/first_page/bottom_nav_first_page.dart';
+import 'package:frenzy/views/pages/home/screen_home.dart';
 import 'package:frenzy/views/pages/signin_page/forgotpassword/forgot_password_screen.dart';
+import 'package:frenzy/views/pages/signup/signup_screen.dart';
 
 class SigninPage extends StatelessWidget {
   SigninPage({super.key});
@@ -68,7 +71,15 @@ class SigninPage extends StatelessWidget {
                     CustomButton(
                       media: MediaQuery.of(context).size,
                       buttonText: "Login",
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(builder: (context) {
+                return BottomNavFirstPage();
+              }),
+              (Route<dynamic> route) => false,
+            );
+                      },
                       color: primary,
                     ),
                     kheight,
@@ -80,15 +91,20 @@ class SigninPage extends StatelessWidget {
                           height: size.height * 0.05,
                           child: Image.asset(google),
                         ),
-                        const Text('Sign In With Google?',
-                            style: TextStyle(color: primary))
+                         Text('Sign In With Google?',
+                            style: TextStyle(color:Theme.of(context).brightness == Brightness.light
+                  ? primary
+                  : whiteColor,
+))
                       ],
                     ),
                     loginAndSignUpRow(
                       context: context,
                       preText: 'New User? Join Us Today! ',
                       buttonText: 'Register here',
-                      onPressed: () async {},
+                      onPressed: () async {
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>SignupScreen()));
+                      },
                     ),
                   ],
                 ),

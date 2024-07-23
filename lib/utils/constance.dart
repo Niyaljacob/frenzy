@@ -13,7 +13,8 @@ const logodark = 'assets/splash1.png';
 const logolight = 'assets/splash2.png';
 const login = 'assets/login_logo.png';
 const google = "assets/Googleimg.png";
-
+const singupdark = "assets/Frenzyblack.png";
+const singuplight = "assets/Frenzy.png";
 
 //border radius 
 
@@ -31,6 +32,10 @@ const kheight20 = SizedBox(
 );
 const kheight15 = SizedBox(
   height: 15,
+);
+
+const kheight30 = SizedBox(
+  height: 30,
 );
 
 const kheight40 = SizedBox(
@@ -54,5 +59,6 @@ const forgot = Text("Forgot password?",style: TextStyle(color: primary, fontWeig
 const forgotpassword = Text('Forgot Password ?',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 25,color: primary),);
 const forgotpassword1 =Text('      Enter the email address\n associated with your account.',style: TextStyle(fontSize: 20,color: primary),);
 const forgotpassword2 = Text('we will email you a link to reset\n                your passowrd.',style: TextStyle(fontSize: 16,color: grey),);
-
+const singupText= Text(""" "Discover moments captured by your friends\n               through photos and videos. \n          Sign up now to stay connected!" """,style: TextStyle(fontSize: 17,fontWeight: FontWeight.w400),);
+const registerotp =   Text("We have sent the verification code to your email address.",style: TextStyle(fontSize: 16),);
 
