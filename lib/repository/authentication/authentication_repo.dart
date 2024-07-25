@@ -95,4 +95,45 @@ class AuthenticationRepository{
   }
 
 
+static Future<Response?>resetPasswordOtp(String email)async{
+  try{
+    Response? response=await client.get(Uri.parse(
+      '${ApiEndpoints.baseUrl+ApiEndpoints.forgotPassword}$email'
+    ));
+    if(kDebugMode){
+      print(response.body);
+    }
+    return response;
+  }catch(e){
+    return null;
+  }
+}
+
+static Future<Response?>verifyOtpPasswordReset(
+  String email, String otp
+)async{
+try{
+  var response = await client.get(Uri.parse('${ApiEndpoints.baseUrl+ApiEndpoints.verifyOtpReset}$email&otp=$otp'));
+  return response;
+}catch(e){
+  return null;
+}
+}
+
+static Future<Response?>passwordUpdate(String email, String password)async{
+  try{
+    var user= {'email':email,
+    'password':password};
+    var response=await client.patch(Uri.parse(ApiEndpoints.baseUrl+ApiEndpoints.updatePassword),
+    body: jsonEncode(user),
+    headers: {"Content-Type": 'application/json'}
+    );
+    if (kDebugMode) {
+        print(response.body);
+      }
+      return response;
+  }catch(e){
+    return null;
+  }
+}
 }
