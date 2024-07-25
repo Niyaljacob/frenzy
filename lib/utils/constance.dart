@@ -64,3 +64,25 @@ const forgotpassword2 = Text('we will email you a link to reset\n               
 const singupText= Text(""" "Discover moments captured by your friends\n               through photos and videos. \n          Sign up now to stay connected!" """,style: TextStyle(fontSize: 17,fontWeight: FontWeight.w400),);
 const registerotp =   Text("We have sent the verification code to your email address.",style: TextStyle(fontSize: 16),);
 
+
+
+//auth key sharedpreference
+const authKey = 'UserLoggedIn';
+
+//token key sharedpreference
+const tokenKey = 'userToken';
+
+//userid key sharedpreference
+const userIdKey = 'userId';
+
+//userRole key sharedpreference
+const userRolekey = 'userRole';
+
+//userEmail key sharedpreference
+const userEmailkey = 'userEmail';
+
+//userName key sharedpreference
+const userNamekey = 'userName';
+
+//userProfilepic key sharedpreference
+const userProfilePickey = 'userProfilePic';

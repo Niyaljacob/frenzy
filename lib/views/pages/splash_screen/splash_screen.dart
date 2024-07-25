@@ -1,7 +1,10 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:frenzy/utils/constance.dart';
+import 'package:frenzy/views/pages/first_page/bottom_nav_first_page.dart';
 import 'package:frenzy/views/pages/signin_page/signin.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:video_player/video_player.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -23,13 +26,7 @@ class _SplashScreenState extends State<SplashScreen> {
         setState(() {});
         _controller.play();
       });
-    Timer(Duration(seconds: 6), () {
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(
-          builder: (context) => SigninPage(),
-        ),
-      );
-    });
+    checkUserLogin(context);
   }
 
    @override
@@ -55,5 +52,22 @@ class _SplashScreenState extends State<SplashScreen> {
             : Container(),
       ),
     );
+  }
+}
+
+Future<void> checkUserLogin(context) async {
+  final preferences = await SharedPreferences.getInstance();
+  final userLoggedIn = preferences.get(authKey);
+  debugPrint(userLoggedIn.toString());
+  if (userLoggedIn == null || userLoggedIn == false) {
+    await Future.delayed(const Duration(seconds: 6));
+    Navigator.of(context).pushReplacement(MaterialPageRoute(
+      builder: (context) => SigninPage(),
+    ));
+  } else {
+    await Future.delayed(const Duration(seconds: 6));
+    Navigator.of(context).pushReplacement(MaterialPageRoute(
+      builder: (context) => BottomNavFirstPage(),
+    ));
   }
 }

@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:frenzy/utils/constance.dart';
 import 'package:frenzy/utils/validation.dart';
+import 'package:frenzy/views/bloc/signin/bloc/signin_bloc.dart';
 import 'package:frenzy/views/pages/common_widgets/class_widgets/textfield.dart';
 import 'package:frenzy/views/pages/common_widgets/function_widgets/custom_button.dart';
 import 'package:frenzy/views/pages/common_widgets/function_widgets/login_to_signup_text.dart';
+import 'package:frenzy/views/pages/common_widgets/function_widgets/snackbarcustom.dart';
 import 'package:frenzy/views/pages/first_page/bottom_nav_first_page.dart';
 import 'package:frenzy/views/pages/signin_page/forgotpassword/forgot_password_screen.dart';
 import 'package:frenzy/views/pages/signup/signup_screen.dart';
@@ -18,7 +21,19 @@ class SigninPage extends StatelessWidget {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
-      body: SafeArea(
+      body:BlocConsumer<SigninBloc, SigninState>(
+        listener:(context, state) {
+          if(state is SigninSuccesState){
+            customSnackbar(context, "Welcome back", primary);
+            Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context){
+              return BottomNavFirstPage();
+            }), (Route<dynamic>route)=>false);
+          }else if(state is SigninErrorState){
+            customSnackbar(context, state.error, red);
+          }
+        },
+        builder: (context, state) {
+          return SafeArea(
           child: SizedBox(
         height: size.height,
         width: size.width,
@@ -34,14 +49,14 @@ class SigninPage extends StatelessWidget {
                       height: size.height * 0.30,
                       child: Image.asset(login),
                     ),
-                    Row(
+                    const Row(
                       children: [
                         loginText,
                       ],
                     ),
                     kheight40,
                     CustomTextField(
-                      hintText: 'username',
+                      hintText: 'email id',
                       validator: validateUsername,
                       controller: _userNameController,
                     ),
@@ -67,20 +82,33 @@ class SigninPage extends StatelessWidget {
                         ),
                       ],
                     ),
-                    CustomButton(
+                    BlocBuilder<SigninBloc, SigninState>(
+                      builder: (context, state) {
+                        if(state is SigninLoadingState){
+                          return CustomButton(
+                            media: MediaQuery.sizeOf(context), 
+                            buttonText: 'LogIn', 
+                            onPressed: (){}, 
+                            color: primary);
+                        }
+                        return CustomButton(
                       media: MediaQuery.of(context).size,
                       buttonText: "Login",
-                      onPressed: () {
-                        Navigator.pushAndRemoveUntil(
-              context,
-              MaterialPageRoute(builder: (context) {
-                return BottomNavFirstPage();
-              }),
-              (Route<dynamic> route) => false,
-            );
+                      onPressed: () async{
+                       if(_formKey.currentState!.validate()){
+                        context.read<SigninBloc>().add(
+                          OnSigninButtonClickedEvent(
+                            email: _userNameController.text, 
+                            passowrd: _passwordController.text)
+                        );
+                       }else{
+                        customSnackbar(context, 'Fill All Fields', primary);
+                       }
                       },
                       color: primary,
-                    ),
+                    );
+                      }),
+                    
                     kheight,
                     const Text('or'),
                     Row(
@@ -92,9 +120,9 @@ class SigninPage extends StatelessWidget {
                         ),
                          Text('Sign In With Google?',
                             style: TextStyle(color:Theme.of(context).brightness == Brightness.light
-                  ? primary
-                  : whiteColor,
-))
+                    ? primary
+                    : whiteColor,
+                    ))
                       ],
                     ),
                     loginAndSignUpRow(
@@ -109,7 +137,9 @@ class SigninPage extends StatelessWidget {
                 ),
               ),
             )),
-      )),
+      ));
+        },
+      )
     );
   }
 }
