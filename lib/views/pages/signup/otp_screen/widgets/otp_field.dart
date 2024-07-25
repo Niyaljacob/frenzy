@@ -11,13 +11,17 @@ Widget buildOtpTextField({
     numberOfFields: 4,
     borderColor: primary,
     showFieldAsBox: false,
-    fieldWidth: 50.0, // Increase the width of each field
-    margin: const EdgeInsets.symmetric(horizontal: 8.0), // Add space between fields
+    fieldWidth: 50.0,
+    margin: const EdgeInsets.symmetric(horizontal: 8.0), 
     onCodeChanged: (String code) {
       // handle validation or checks here
       if (validator != null) {
         validator();
       }
+    },
+     onSubmit: (String verificationCode) {
+      controller.text = verificationCode; // Set the controller text to the OTP value
+      debugPrint('OTP Entered: $verificationCode'); // Debug print to check the OTP value
     },
   );
 }
