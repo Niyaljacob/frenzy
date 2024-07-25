@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:frenzy/model/user_model.dart';
 import 'package:frenzy/utils/constance.dart';
 import 'package:frenzy/utils/validation.dart';
+import 'package:frenzy/views/bloc/signup/signup_bloc/sign_up_bloc.dart';
 import 'package:frenzy/views/pages/common_widgets/class_widgets/textfield.dart';
 import 'package:frenzy/views/pages/common_widgets/function_widgets/custom_button.dart';
 import 'package:frenzy/views/pages/common_widgets/function_widgets/login_to_signup_text.dart';
+import 'package:frenzy/views/pages/common_widgets/function_widgets/snackbarcustom.dart';
 import 'package:frenzy/views/pages/signin_page/signin.dart';
 import 'package:frenzy/views/pages/signup/otp_screen/register_otp_screen.dart';
 
@@ -22,8 +26,27 @@ class SignupScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
-        body: SafeArea(
-          child: SingleChildScrollView(
+        body: BlocConsumer<SignUpBloc, SignUpState>(
+          listener: (context, state){
+            if(state is SignUpLoadingState){
+              customSnackbar(context, 'Succes', primary);
+              Navigator.of(context).pushReplacement(MaterialPageRoute(
+                builder: (ctx)=>RegisterOtpScreen(
+                  email: _emailController.text,
+                      user: UserModel(
+                          userName: _userNameController.text,
+                          password: _passwordController.text,
+                          phoneNumber: _phoneController.text,
+                          emailId: _emailController.text),
+                )
+                )
+                );
+            }else if (state is signUpErrorState){
+              customSnackbar(context, state.error, red);
+            }
+          },
+          builder: (context, state){
+            return SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Form(
@@ -65,13 +88,37 @@ class SignupScreen extends StatelessWidget {
                       validator: validatePassword,
                       controller: _confirmPasswordController,),
                       kheight20,
-                    CustomButton(
-                       media: MediaQuery.sizeOf(context),
-                      buttonText: "Register", 
-                      onPressed: (){
-                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>RegisterOtpScreen()));
-                      }, 
-                      color: primary),
+                     BlocBuilder<SignUpBloc, SignUpState>(
+                      builder: (context, state){
+                        if(state is SignUpLoadingState){
+                          return CustomButton(
+                            media: MediaQuery.sizeOf(context), 
+                            buttonText: 'Register',
+                            onPressed: (){}, color: primary);
+                        }
+                        return CustomButton(
+                          media: MediaQuery.sizeOf(context), 
+                          buttonText: 'Register', 
+                          onPressed: ()async{
+                            if(_passwordController.text==_confirmPasswordController.text){
+                              if(_formKey.currentState!.validate()){
+                                context.read<SignUpBloc>().add(
+                                  OnSignupButtonClickedEvent(
+                                    userName: _userNameController.text, 
+                                    password: _passwordController.text, 
+                                    phoneNumber: _phoneController.text, 
+                                    email: _emailController.text)
+                                );
+                              }else{
+                                customSnackbar(context, 'Fill all Fields', red);
+                              }
+                            }else{
+                              customSnackbar(context, "Password miss match", red);
+                            }
+                          }, 
+                          color: primary);
+                      },
+                     ),
                       kheight15,
                       loginAndSignUpRow(
                         context: context, 
@@ -83,8 +130,10 @@ class SignupScreen extends StatelessWidget {
                   ],
                 )),
             ),
-          ),
-        ),
+          );
+          },
+        )
+        
     );
   }
 }

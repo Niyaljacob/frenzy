@@ -6,6 +6,7 @@ const whiteColor = Colors.white;
 const primary = Color(0xFF0C3452);
 const black = Colors.black;
 const grey = Colors.grey;
+const red =Colors.red;
 
 //image
 
@@ -15,6 +16,7 @@ const login = 'assets/login_logo.png';
 const google = "assets/Googleimg.png";
 const singupdark = "assets/Frenzyblack.png";
 const singuplight = "assets/Frenzy.png";
+const imagepicker = "assets/image picker.jpg";
 
 //border radius 
 

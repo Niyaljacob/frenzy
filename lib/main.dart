@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:frenzy/utils/themes.dart';
+import 'package:frenzy/views/bloc/signup/signup_bloc/sign_up_bloc.dart';
 import 'package:frenzy/views/pages/splash_screen/splash_screen.dart';
 
 void main() {
@@ -12,12 +14,17 @@ class MyApp extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: Themes.lightModeTheme,
-      darkTheme: Themes.darkModeTheme,
-    
-      home: SplashScreen(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context)=>SignUpBloc())
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: Themes.lightModeTheme,
+        darkTheme: Themes.darkModeTheme,
+      
+        home: SplashScreen(),
+      ),
     );
   }
 }

@@ -1,14 +1,17 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:frenzy/model/user_model.dart';
 import 'package:frenzy/utils/constance.dart';
 import 'package:frenzy/views/pages/common_widgets/function_widgets/custom_button.dart';
 import 'package:frenzy/views/pages/signup/otp_screen/widgets/otp_field.dart';
 
 
 class RegisterOtpScreen extends StatefulWidget {
+  final UserModel user;
+  final String email;
    
-   RegisterOtpScreen({super.key});
+   RegisterOtpScreen({super.key, required this.user, required this.email});
 
   @override
   State<RegisterOtpScreen> createState() => _RegisterOtpScreenState();

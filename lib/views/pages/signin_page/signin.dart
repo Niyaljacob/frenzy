@@ -5,7 +5,6 @@ import 'package:frenzy/views/pages/common_widgets/class_widgets/textfield.dart';
 import 'package:frenzy/views/pages/common_widgets/function_widgets/custom_button.dart';
 import 'package:frenzy/views/pages/common_widgets/function_widgets/login_to_signup_text.dart';
 import 'package:frenzy/views/pages/first_page/bottom_nav_first_page.dart';
-import 'package:frenzy/views/pages/home/screen_home.dart';
 import 'package:frenzy/views/pages/signin_page/forgotpassword/forgot_password_screen.dart';
 import 'package:frenzy/views/pages/signup/signup_screen.dart';
 
