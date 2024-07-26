@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class OtpForgotpasswordScreen extends StatelessWidget {
-  const OtpForgotpasswordScreen({super.key});
+  final String email;
+  const OtpForgotpasswordScreen({super.key, required this.email});
 
   @override
   Widget build(BuildContext context) {
