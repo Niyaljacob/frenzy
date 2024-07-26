@@ -44,7 +44,7 @@ class ForgotPasswordScreen extends StatelessWidget {
               children: [
               const Center(child: forgotpassword),
 
-               const Image(image: AssetImage('assets/otp_sad.png'),height: 200,),
+               const Image(image: AssetImage(sadForgot),height: 200,),
                kheight20,
                forgotpassword1,
                kheight15,
