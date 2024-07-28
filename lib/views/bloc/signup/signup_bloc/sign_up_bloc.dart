@@ -11,9 +11,8 @@ part 'sign_up_state.dart';
 
 class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
   SignUpBloc() : super(SignUpInitial()) {
-    on<OnSignupButtonClickedEvent>((event, emit)async {
+    on<OnSignupButtonClickedEvent>((event, emit) async {
       emit(SignUpLoadingState());
-
 
       UserModel finalDatas = UserModel(
         userName: event.userName,
@@ -22,14 +21,15 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
         emailId: event.email,
       );
 
-      Response? response = await AuthenticationRepository().sentingOtp(finalDatas);
-      if(response!=null && response.statusCode==200){
+      Response? response =
+          await AuthenticationRepository().sentingOtp(finalDatas);
+      if (response != null && response.statusCode == 200) {
         return emit(SignUpSuccesState());
-      }else if (response!=null){
+      } else if (response != null) {
         final responseData = jsonDecode(response.body);
 
         return emit(signUpErrorState(error: responseData["message"]));
-      }else{
+      } else {
         return emit(signUpErrorState(error: "something went wrong"));
       }
     });

@@ -20,6 +20,8 @@ const singuplight = "assets/Frenzy.png";
 const imagepicker = "assets/image picker.jpg";
 const sadForgot= 'assets/otp_sad.png';
 const happyForgot = 'assets/otp_happy.png';
+const post1 = "assets/post1.webp";
+const profile1 ="assets/images.jpeg";
 
 //border radius 
 
