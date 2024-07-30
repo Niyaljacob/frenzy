@@ -20,7 +20,7 @@ Future<void> confirmationDialog({
         ),
         title: Text(
           title,
-          style: TextStyle(
+          style: const TextStyle(
             color: red,
             fontSize: 16,
           ),
@@ -30,7 +30,7 @@ Future<void> confirmationDialog({
             children: <Widget>[
               Text(
                 content,
-                style: TextStyle(
+                style: const TextStyle(
                   color: red,
                   fontSize: 16,
                 ),
@@ -48,10 +48,10 @@ Future<void> confirmationDialog({
             },
             child: Text(
               cancelButtonText,
-              style: TextStyle(
-  color: primary,
-  fontSize: 16,
-),
+              style: const TextStyle(
+                color: primary,
+                fontSize: 16,
+              ),
             ),
           ),
           TextButton(
@@ -61,10 +61,13 @@ Future<void> confirmationDialog({
 
               // Dismiss the dialog
             },
-            child: Text(confirmButtonText, style: TextStyle(
-  color: primary,
-  fontSize: 16,
-),),
+            child: Text(
+              confirmButtonText,
+              style: const TextStyle(
+                color: primary,
+                fontSize: 16,
+              ),
+            ),
           ),
         ],
       );

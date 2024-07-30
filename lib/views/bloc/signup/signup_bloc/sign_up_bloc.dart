@@ -4,6 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:frenzy/model/user_model.dart';
 import 'package:frenzy/repository/authentication/authentication_repo.dart';
 import 'package:http/http.dart';
+// ignore: depend_on_referenced_packages
 import 'package:meta/meta.dart';
 
 part 'sign_up_event.dart';
@@ -28,9 +29,9 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
       } else if (response != null) {
         final responseData = jsonDecode(response.body);
 
-        return emit(signUpErrorState(error: responseData["message"]));
+        return emit(SignUpErrorState(error: responseData["message"]));
       } else {
-        return emit(signUpErrorState(error: "something went wrong"));
+        return emit(SignUpErrorState(error: "something went wrong"));
       }
     });
   }

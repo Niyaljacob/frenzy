@@ -9,6 +9,7 @@ import 'package:frenzy/utils/constance.dart';
 import 'package:frenzy/views/bloc/signup/otpverification_register/bloc/otp_verification_bloc.dart';
 import 'package:frenzy/views/bloc/signup/signup_bloc/sign_up_bloc.dart';
 import 'package:frenzy/views/pages/common_widgets/function_widgets/custom_button.dart';
+import 'package:frenzy/views/pages/common_widgets/function_widgets/loading_button.dart';
 import 'package:frenzy/views/pages/common_widgets/function_widgets/snackbarcustom.dart';
 import 'package:frenzy/views/pages/signin_page/signin.dart';
 import 'package:frenzy/views/pages/signup/otp_screen/widgets/otp_field.dart';
@@ -141,11 +142,7 @@ class _RegisterOtpScreenState extends State<RegisterOtpScreen> {
               BlocBuilder<OtpVerificationBloc, OtpVerificationState>(
                 builder: (context, state){
                   if(state is OtpVerificationLoadinState) {
-                    return CustomButton(
-                      media: MediaQuery.sizeOf(context), 
-                      buttonText: "verify", 
-                      onPressed: (){}, 
-                      color: primary);
+                    return loadingAnimationWidget();
                   }
                   return CustomButton(
                     media: MediaQuery.sizeOf(context), 

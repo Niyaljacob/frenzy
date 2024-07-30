@@ -141,11 +141,11 @@ class ForgotCustomTextField extends StatelessWidget {
   final String? Function(String?) validator;
 
   const ForgotCustomTextField({
-    Key? key,
+    super.key,
     required this.hintText,
     required this.controller,
     required this.validator,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -157,7 +157,7 @@ class ForgotCustomTextField extends StatelessWidget {
             color: grey.withOpacity(0.5),
             spreadRadius: 5,
             blurRadius: 7,
-            offset: Offset(0, 3), // changes position of shadow
+            offset: const Offset(0, 3), // changes position of shadow
           ),
         ],
         borderRadius: BorderRadius.circular(10),
@@ -168,7 +168,7 @@ class ForgotCustomTextField extends StatelessWidget {
         decoration: InputDecoration(
           hintText: hintText,
           border: InputBorder.none,
-          contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+          contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
         ),
       ),
     );

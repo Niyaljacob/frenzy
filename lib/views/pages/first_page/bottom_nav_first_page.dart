@@ -12,11 +12,11 @@ class BottomNavFirstPage extends StatelessWidget {
    BottomNavFirstPage({super.key});
 
   final List<Widget>pages=[
-    HomeScreen(),
-    ExplorScreen(),
+    const HomeScreen(),
+    const ExplorScreen(),
     PostAddScreen(),
-    ChatScreen(),
-    Profilescreen(),
+    const ChatScreen(),
+    const Profilescreen(),
   ];
 
   @override

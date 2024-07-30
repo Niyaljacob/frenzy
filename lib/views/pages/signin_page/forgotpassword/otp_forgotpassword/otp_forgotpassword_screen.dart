@@ -26,7 +26,7 @@ class OtpForgotpasswordScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text(
+          title: const Text(
             'Password Reset',
             style: TextStyle(color: primary, fontWeight: FontWeight.bold),
           ),
@@ -45,7 +45,7 @@ class OtpForgotpasswordScreen extends StatelessWidget {
                     height: size.height * 0.15,
                     child: Image.asset(login),
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   SizedBox(
                     height: size.height * 0.4,
                     child: Form(
@@ -58,7 +58,7 @@ class OtpForgotpasswordScreen extends StatelessWidget {
                             controller: _newPassWordController,
                             validator: validatePassword,
                           ),
-                          SizedBox(height: 20),
+                          const SizedBox(height: 20),
                           CustomTextField(
                             hintText: 'Re-enter new password',
                             controller: _confirmPasswordController,
@@ -72,7 +72,7 @@ class OtpForgotpasswordScreen extends StatelessWidget {
                               return null;
                             },
                           ),
-                          SizedBox(height: 50),
+                          const SizedBox(height: 50),
                           BlocBuilder<ForgotPasswordBloc, ForgotPasswordState>(
                             builder: (context, state) {
                               if (state is ResetPasswordLoadingState) {

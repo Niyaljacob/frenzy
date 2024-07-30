@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:bloc/bloc.dart';
 import 'package:frenzy/repository/authentication/authentication_repo.dart';
+// ignore: depend_on_referenced_packages
 import 'package:meta/meta.dart';
 
 part 'otp_verification_event.dart';
@@ -15,8 +16,8 @@ class OtpVerificationBloc extends Bloc<OtpVerificationEvent, OtpVerificationStat
       if(response != null && response.statusCode==200){
         return emit(OtpVerificationSuccessState());
       }else if (response != null){
-        final ResponseData = jsonDecode(response.body);
-        return emit(OtpVerificationErroState(error: ResponseData["message"]));
+        final responseData = jsonDecode(response.body);
+        return emit(OtpVerificationErroState(error: responseData["message"]));
       }else{
         return emit(OtpVerificationErroState(error: "Something went wrong"));
       }

@@ -7,7 +7,7 @@ CurvedNavigationBar bottomNav(BuildContext context) {
   return CurvedNavigationBar(
     index: 0,
     height: 60.0,
-    items: <Widget>[
+    items: const <Widget>[
       Icon(Icons.home, size: 30, color: primary),
       Icon(Icons.search, size: 30, color: primary),
       Icon(Icons.add, size: 30, color: primary),
@@ -18,7 +18,7 @@ CurvedNavigationBar bottomNav(BuildContext context) {
     buttonBackgroundColor: Theme.of(context).brightness == Brightness.light ? whiteColor : black,
     backgroundColor: Theme.of(context).brightness == Brightness.light ? Colors.white : Colors.black,
     animationCurve: Curves.easeInOut,
-    animationDuration: Duration(milliseconds: 600),
+    animationDuration: const Duration(milliseconds: 600),
     onTap: (index) {
       currentPage.value = index;
     },

@@ -7,7 +7,7 @@ class CustomButton extends StatelessWidget {
   final VoidCallback onPressed;
   final Color color;
 
-  const CustomButton({
+  const CustomButton({super.key, 
     required this.media,
     required this.buttonText,
     required this.onPressed,
@@ -27,7 +27,7 @@ class CustomButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(20),
           ),
         ),
-        child: Text(buttonText, style: TextStyle(color: whiteColor)),
+        child: Text(buttonText, style: const TextStyle(color: whiteColor)),
       ),
     );
   }

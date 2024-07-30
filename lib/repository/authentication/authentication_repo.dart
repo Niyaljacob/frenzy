@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:frenzy/model/user_model.dart';
 import 'package:frenzy/utils/api_urls/api_urls.dart';
 import 'package:frenzy/utils/functions/set_user_loggedin.dart';
@@ -9,6 +8,7 @@ import 'package:http/http.dart' as http;
 
 
 class AuthenticationRepository{
+  
   static var client = http.Client();
   Future<Response?>sentingOtp(UserModel user)async{
     var data ={

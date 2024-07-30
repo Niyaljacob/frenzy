@@ -6,21 +6,41 @@ import 'package:frenzy/utils/validation.dart';
 import 'package:frenzy/views/bloc/signup/signup_bloc/sign_up_bloc.dart';
 import 'package:frenzy/views/pages/common_widgets/class_widgets/textfield.dart';
 import 'package:frenzy/views/pages/common_widgets/function_widgets/custom_button.dart';
+import 'package:frenzy/views/pages/common_widgets/function_widgets/loading_button.dart';
 import 'package:frenzy/views/pages/common_widgets/function_widgets/login_to_signup_text.dart';
 import 'package:frenzy/views/pages/common_widgets/function_widgets/snackbarcustom.dart';
 import 'package:frenzy/views/pages/signin_page/signin.dart';
 import 'package:frenzy/views/pages/signup/otp_screen/register_otp_screen.dart';
 
-class SignupScreen extends StatelessWidget {
-   SignupScreen({super.key});
+class SignupScreen extends StatefulWidget {
+   const SignupScreen({super.key});
+
+  @override
+  State<SignupScreen> createState() => _SignupScreenState();
+}
+
+class _SignupScreenState extends State<SignupScreen> {
   final TextEditingController _userNameController = TextEditingController();
+
   final TextEditingController _emailController = TextEditingController();
+
   final TextEditingController _phoneController = TextEditingController();
+
     final TextEditingController _passwordController = TextEditingController();
+
   final TextEditingController _confirmPasswordController = TextEditingController();
+
   final _formKey=GlobalKey<FormState>();
 
-
+  @override
+  void dispose() {
+   _userNameController.dispose();
+    _emailController.dispose();
+    _phoneController.dispose();
+    _passwordController.dispose();
+    _confirmPasswordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +61,7 @@ class SignupScreen extends StatelessWidget {
                 )
                 )
                 );
-            }else if (state is signUpErrorState){
+            }else if (state is SignUpErrorState){
               customSnackbar(context, state.error, red);
             }
           },
@@ -92,10 +112,7 @@ class SignupScreen extends StatelessWidget {
                        BlocBuilder<SignUpBloc, SignUpState>(
                         builder: (context, state){
                           if(state is SignUpLoadingState){
-                            return CustomButton(
-                              media: MediaQuery.sizeOf(context), 
-                              buttonText: 'Register',
-                              onPressed: (){}, color: primary);
+                            return loadingAnimationWidget();
                           }
                           return CustomButton(
                             media: MediaQuery.sizeOf(context), 

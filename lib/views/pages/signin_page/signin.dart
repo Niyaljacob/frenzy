@@ -5,6 +5,7 @@ import 'package:frenzy/utils/validation.dart';
 import 'package:frenzy/views/bloc/signin/bloc/signin_bloc.dart';
 import 'package:frenzy/views/pages/common_widgets/class_widgets/textfield.dart';
 import 'package:frenzy/views/pages/common_widgets/function_widgets/custom_button.dart';
+import 'package:frenzy/views/pages/common_widgets/function_widgets/loading_button.dart';
 import 'package:frenzy/views/pages/common_widgets/function_widgets/login_to_signup_text.dart';
 import 'package:frenzy/views/pages/common_widgets/function_widgets/snackbarcustom.dart';
 import 'package:frenzy/views/pages/first_page/bottom_nav_first_page.dart';
@@ -85,11 +86,7 @@ class SigninPage extends StatelessWidget {
                     BlocBuilder<SigninBloc, SigninState>(
                       builder: (context, state) {
                         if(state is SigninLoadingState){
-                          return CustomButton(
-                            media: MediaQuery.sizeOf(context), 
-                            buttonText: 'LogIn', 
-                            onPressed: (){}, 
-                            color: primary);
+                          return loadingAnimationWidget();
                         }
                         return CustomButton(
                       media: MediaQuery.of(context).size,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-ListTile SettingsListTile(
+ListTile settingsListTile(
   {required VoidCallback onTap,
     required Widget leading,
     required String title,

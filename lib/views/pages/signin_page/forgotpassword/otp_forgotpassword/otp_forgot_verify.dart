@@ -6,6 +6,7 @@ import 'package:frenzy/views/bloc/forgot_password_bloc/bloc/forgotpassword_bloc.
 import 'package:frenzy/views/bloc/forgot_password_bloc/bloc/forgotpassword_event.dart';
 import 'package:frenzy/views/bloc/forgot_password_bloc/bloc/forgotpassword_state.dart';
 import 'package:frenzy/views/pages/common_widgets/function_widgets/custom_button.dart';
+import 'package:frenzy/views/pages/common_widgets/function_widgets/loading_button.dart';
 import 'package:frenzy/views/pages/common_widgets/function_widgets/snackbarcustom.dart';
 import 'package:frenzy/views/pages/signin_page/signin.dart';
 import 'package:frenzy/views/pages/signup/otp_screen/widgets/otp_field.dart';
@@ -122,12 +123,7 @@ class _OtpForgotVerifyState extends State<OtpForgotVerify> {
                   BlocBuilder<ForgotPasswordBloc, ForgotPasswordState>(
                     builder: (context, state) {
                       if (state is OtpverifiedLoadingState) {
-                        return CustomButton(
-                          media: MediaQuery.sizeOf(context),
-                          buttonText: "Verifying...",
-                          onPressed: () {},
-                          color: primary,
-                        );
+                        return loadingAnimationWidget();
                       }
                       return CustomButton(
                         media: MediaQuery.sizeOf(context),

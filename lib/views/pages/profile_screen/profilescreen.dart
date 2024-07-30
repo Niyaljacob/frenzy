@@ -12,7 +12,7 @@ class Profilescreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: SettingsListTile(
+        body: settingsListTile(
           onTap: ()async{
             confirmationDialog(
               context: context, 
@@ -30,9 +30,9 @@ class Profilescreen extends StatelessWidget {
                 }
               });
           }, 
-          leading: Icon(Icons.logout), 
+          leading: const Icon(Icons.logout), 
           title: 'Log Out', 
-          trailing: Icon(Icons.arrow_forward_ios, size: 20,)),
+          trailing: const Icon(Icons.arrow_forward_ios, size: 20,)),
       ),
     );
   }

@@ -8,7 +8,7 @@ import 'package:frenzy/views/pages/post_add/widgets/post_discribstion_textfield.
 import 'package:image_picker/image_picker.dart';
 
 
-final ValueNotifier<String> ImagePick = ValueNotifier('');
+final ValueNotifier<String> imagePick = ValueNotifier('');
 
 // ignore: must_be_immutable
 class PostAddScreen extends StatelessWidget {
@@ -31,22 +31,22 @@ class PostAddScreen extends StatelessWidget {
             child: Column(
               children: [
                 ValueListenableBuilder(
-                  valueListenable: ImagePick, 
+                  valueListenable: imagePick, 
                   builder: (context, value, child){
                     return GestureDetector(
                       onTap: () async{
                         file=await ImagePicker().pickImage(source: ImageSource.gallery);
                         if(file!=null){
-                          ImagePick.value=file!.path;
+                          imagePick.value=file!.path;
                         }
                       },
                       child: Container(
                         color: grey,
                         width: size.width,
                         height: size.height*0.4,
-                        child: ImagePick.value==''
+                        child: imagePick.value==''
                         ? Image.asset(imagepicker,)
-                        : Image.file(File(ImagePick.value),
+                        : Image.file(File(imagePick.value),
                         fit: BoxFit.cover,
                         )
                         ),
