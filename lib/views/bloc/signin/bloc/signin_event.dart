@@ -11,3 +11,4 @@ class OnSigninButtonClickedEvent extends SigninEvent{
   OnSigninButtonClickedEvent({required this.email, required this.passowrd});
 }
 
+class OnGoogleSignInButtonClickedEvent extends SigninEvent {}

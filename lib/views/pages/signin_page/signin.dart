@@ -115,11 +115,17 @@ class SigninPage extends StatelessWidget {
                           height: size.height * 0.05,
                           child: Image.asset(google),
                         ),
-                         Text('Sign In With Google?',
-                            style: TextStyle(color:Theme.of(context).brightness == Brightness.light
-                    ? primary
-                    : whiteColor,
-                    ))
+                        Flexible(child: BlocBuilder<SigninBloc, SigninState>(
+                          builder: (context, state) {
+                            if (state is GoogleAuthLoadingstate) {
+                                return const CircularProgressIndicator();
+                              }
+                              return TextButton(onPressed: ()async{
+                                context.read<SigninBloc>().add(OnGoogleSignInButtonClickedEvent());
+                              }, child:  Text('Sign In With Google?',
+                                      style: TextStyle(color: Theme.of(context).brightness==Brightness.light? primary:whiteColor)));
+                          },
+                        ))
                       ],
                     ),
                     loginAndSignUpRow(
@@ -127,7 +133,7 @@ class SigninPage extends StatelessWidget {
                       preText: 'New User? Join Us Today! ',
                       buttonText: 'Register here',
                       onPressed: () async {
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>SignupScreen()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>const SignupScreen()));
                       },
                     ),
                   ],

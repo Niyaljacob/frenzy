@@ -15,3 +15,4 @@ final class SigninErrorState extends SigninState {
 
   SigninErrorState({required this.error});
 }
+final class GoogleAuthLoadingstate extends SigninState {}

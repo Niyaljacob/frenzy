@@ -135,4 +135,28 @@ static Future<Response?>passwordUpdate(String email, String password)async{
     return null;
   }
 }
+
+static Future<Response?>googleSignin(String email)async{
+try{
+  final finalEmail={'email':email};
+  var response=await client.post(Uri.parse(ApiEndpoints.baseUrl+ApiEndpoints.googleLogin),
+  body: jsonEncode(finalEmail),
+  headers: {"Content-Type": 'application/json'}
+  );
+  if(response.statusCode==200){
+    final responseBody=jsonDecode(response.body);
+     await setUserLoggedin(
+          token: responseBody['user']['token'],
+          userrole: responseBody['user']['role'],
+          userid: responseBody['user']['_id'],
+          userEmail: responseBody['user']['email'],
+          userName: responseBody['user']['userName'],
+          userprofile: responseBody['user']['profilePic'],
+        );
+  }
+  return response;
+}catch(e){
+  return null;
+}
+}
 }

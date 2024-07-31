@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frenzy/utils/functions/set_user_loggedin.dart';
+import 'package:frenzy/utils/functions/sigin_with_google.dart';
 import 'package:frenzy/views/pages/common_widgets/function_widgets/confirmationdialog.dart';
 import 'package:frenzy/views/pages/first_page/bottom_nav_first_page.dart';
 import 'package:frenzy/views/pages/profile_screen/widgets/settings_list_tile.dart';
@@ -22,6 +23,7 @@ class Profilescreen extends StatelessWidget {
               cancelButtonText: "cancel", 
               onConfirm: ()async{
                 await clearUserSession();
+                await googleSignOut();
                 currentPage.value=0;
                 if(context.mounted){
                   Navigator.pushAndRemoveUntil(
