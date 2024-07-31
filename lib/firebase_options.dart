@@ -41,48 +41,49 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyBMqJkgwfY8Bm61sStEXgHbspqWrfA3tl4',
-    appId: '1:396447708149:web:77f391016e29082132e6bc',
-    messagingSenderId: '396447708149',
-    projectId: 'frenzy-e7bbd',
-    authDomain: 'frenzy-e7bbd.firebaseapp.com',
-    storageBucket: 'frenzy-e7bbd.appspot.com',
-    measurementId: 'G-VLEVH2XMNM',
+    apiKey: 'AIzaSyBZsfuvNNlDG0KUVsBsCjKYbxwQ86bximI',
+    appId: '1:646751155063:web:fb40cc285a168d6dcb2772',
+    messagingSenderId: '646751155063',
+    projectId: 'frenzy-2a03e',
+    authDomain: 'frenzy-2a03e.firebaseapp.com',
+    storageBucket: 'frenzy-2a03e.appspot.com',
+    measurementId: 'G-TXD8FF0HDD',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDs00yzo5XuuYno03OMPtptWJMJtSmYUWc',
-    appId: '1:396447708149:android:6f7937234cbe881232e6bc',
-    messagingSenderId: '396447708149',
-    projectId: 'frenzy-e7bbd',
-    storageBucket: 'frenzy-e7bbd.appspot.com',
+    apiKey: 'AIzaSyANgkt68tyaX1JjWXilLGq29mG7yQU520E',
+    appId: '1:646751155063:android:97af0d862c36956dcb2772',
+    messagingSenderId: '646751155063',
+    projectId: 'frenzy-2a03e',
+    storageBucket: 'frenzy-2a03e.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyAFOyaY4j4vNgz9204PLM0ESJHt98Z_poY',
-    appId: '1:396447708149:ios:06fc1d743869dd0e32e6bc',
-    messagingSenderId: '396447708149',
-    projectId: 'frenzy-e7bbd',
-    storageBucket: 'frenzy-e7bbd.appspot.com',
+    apiKey: 'AIzaSyD-a--cF90Gd75yo8vyK58XzU7XCTb8Vfo',
+    appId: '1:646751155063:ios:de4b6620483d6968cb2772',
+    messagingSenderId: '646751155063',
+    projectId: 'frenzy-2a03e',
+    storageBucket: 'frenzy-2a03e.appspot.com',
     iosBundleId: 'com.example.frenzy',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyAFOyaY4j4vNgz9204PLM0ESJHt98Z_poY',
-    appId: '1:396447708149:ios:06fc1d743869dd0e32e6bc',
-    messagingSenderId: '396447708149',
-    projectId: 'frenzy-e7bbd',
-    storageBucket: 'frenzy-e7bbd.appspot.com',
+    apiKey: 'AIzaSyD-a--cF90Gd75yo8vyK58XzU7XCTb8Vfo',
+    appId: '1:646751155063:ios:de4b6620483d6968cb2772',
+    messagingSenderId: '646751155063',
+    projectId: 'frenzy-2a03e',
+    storageBucket: 'frenzy-2a03e.appspot.com',
     iosBundleId: 'com.example.frenzy',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyBMqJkgwfY8Bm61sStEXgHbspqWrfA3tl4',
-    appId: '1:396447708149:web:642d3c9eea6b5f4432e6bc',
-    messagingSenderId: '396447708149',
-    projectId: 'frenzy-e7bbd',
-    authDomain: 'frenzy-e7bbd.firebaseapp.com',
-    storageBucket: 'frenzy-e7bbd.appspot.com',
-    measurementId: 'G-0E7LD6ZLE6',
+    apiKey: 'AIzaSyBZsfuvNNlDG0KUVsBsCjKYbxwQ86bximI',
+    appId: '1:646751155063:web:8078bc24823541a4cb2772',
+    messagingSenderId: '646751155063',
+    projectId: 'frenzy-2a03e',
+    authDomain: 'frenzy-2a03e.firebaseapp.com',
+    storageBucket: 'frenzy-2a03e.appspot.com',
+    measurementId: 'G-J1D08ZC5LQ',
   );
+
 }

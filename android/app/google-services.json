@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "396447708149",
-    "project_id": "frenzy-e7bbd",
-    "storage_bucket": "frenzy-e7bbd.appspot.com"
+    "project_number": "646751155063",
+    "project_id": "frenzy-2a03e",
+    "storage_bucket": "frenzy-2a03e.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:396447708149:android:6f7937234cbe881232e6bc",
+        "mobilesdk_app_id": "1:646751155063:android:97af0d862c36956dcb2772",
         "android_client_info": {
           "package_name": "com.example.frenzy"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDs00yzo5XuuYno03OMPtptWJMJtSmYUWc"
+          "current_key": "AIzaSyANgkt68tyaX1JjWXilLGq29mG7yQU520E"
         }
       ],
       "services": {
