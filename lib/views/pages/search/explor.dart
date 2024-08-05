@@ -21,11 +21,11 @@ class ExplorScreen extends StatelessWidget {
               child: TextField(
                 decoration: InputDecoration(
                   labelText: 'Search',
-                  prefixIcon: Icon(Icons.search),
+                  prefixIcon: const Icon(Icons.search),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8.0),
                   ),
-                  contentPadding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+                  contentPadding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
                 ),
               ),
             ),

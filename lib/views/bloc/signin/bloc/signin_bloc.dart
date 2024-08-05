@@ -33,6 +33,7 @@ class SigninBloc extends Bloc<SigninEvent, SigninState> {
           response.user != null &&
           response.user!.email != null){
             var email = response.user!.email;
+            // ignore: avoid_print
             print(email);
             Response? finalResponse = await AuthenticationRepository.googleSignin(email!);
              if (finalResponse != null && finalResponse.statusCode == 200){

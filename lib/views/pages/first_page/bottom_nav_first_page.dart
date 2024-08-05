@@ -13,7 +13,7 @@ class BottomNavFirstPage extends StatelessWidget {
 
   final List<Widget>pages=[
     const HomeScreen(),
-     ExplorScreen(),
+     const ExplorScreen(),
     PostAddScreen(),
     const ChatScreen(),
     const Profilescreen(),
