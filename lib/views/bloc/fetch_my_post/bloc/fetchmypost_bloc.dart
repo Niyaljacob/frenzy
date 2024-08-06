@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:bloc/bloc.dart';
 import 'package:frenzy/model/my_post_model/my_post_model.dart';
+import 'package:frenzy/repository/post_repo/post_repo.dart';
 import 'package:frenzy/repository/user_repository/user_repo.dart';
 // ignore: depend_on_referenced_packages
 import 'package:meta/meta.dart';
@@ -28,6 +29,22 @@ class FetchmypostBloc extends Bloc<FetchmypostEvent, FetchmypostState> {
      
      }
     });
+
+    on<OnMyPostDeleteButtonPressedEvent>(
+      (event, emit)async{
+        emit(OnDeleteButtonClickedLoadingState());
+        var response=await PostRepository.deletePost(event.postId);
+        if (response != null && response.statusCode == 200) {
+          add(FetchAllMyPostsEvent());
+          return emit(OnDeleteButtonClickedSuccesState());
+        }else if(response!=null){
+          final responseBody=jsonDecode(response.body);
+          return emit(OnDeleteButtonClickedErrrorState(error: responseBody['message']));
+        }else{
+          return emit(OnDeleteButtonClickedErrrorState(error: 'Something went wrong'));
+        }
+      }
+    );
   }
 
   List<MyPostModel> parsePostsFromJson(String jsonString) {

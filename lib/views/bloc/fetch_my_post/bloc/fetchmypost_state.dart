@@ -18,3 +18,13 @@ final class FetchMyPostErrorState extends FetchmypostState {
 
   FetchMyPostErrorState({required this.error});
 }
+
+final class OnDeleteButtonClickedLoadingState extends FetchmypostState {}
+
+final class OnDeleteButtonClickedSuccesState extends FetchmypostState {}
+
+final class OnDeleteButtonClickedErrrorState extends FetchmypostState {
+  final String error;
+
+  OnDeleteButtonClickedErrrorState({required this.error});
+}
