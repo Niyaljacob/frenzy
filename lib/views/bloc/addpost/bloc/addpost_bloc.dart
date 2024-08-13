@@ -11,7 +11,7 @@ class AddpostBloc extends Bloc<AddpostEvent, AddpostState> {
       emit(AddPostLoadingstate());
       final response =await PostRepository.addPost(event.description, event.imagePath);
       if(response!=null && response.statusCode==200){
-        emit(AddPostLoadingstate());
+        emit(AddPostSuccesState());
         if(kDebugMode){
           print(response.body);
         }
