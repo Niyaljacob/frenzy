@@ -1,40 +1,119 @@
 import 'package:flutter/material.dart';
-import 'package:frenzy/utils/functions/set_user_loggedin.dart';
-import 'package:frenzy/utils/functions/sigin_with_google.dart';
-import 'package:frenzy/views/pages/common_widgets/function_widgets/confirmationdialog.dart';
-import 'package:frenzy/views/pages/first_page/bottom_nav_first_page.dart';
-import 'package:frenzy/views/pages/profile_screen/widgets/settings_list_tile.dart';
-import 'package:frenzy/views/pages/signin_page/signin.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:frenzy/model/user_suggestions/logined_user_details_model.dart';
+import 'package:frenzy/views/bloc/login_user_details_bloc/login_user_details_bloc.dart';
+import 'package:frenzy/views/pages/profile_screen/edit_profile/edit_profile_screen.dart';
+import 'package:frenzy/views/pages/profile_screen/setting_page/setting_screen.dart';
+import 'package:frenzy/views/pages/profile_screen/widgets/profile_sessions.dart';
+import 'package:frenzy/views/pages/profile_screen/widgets/shimmer_widget.dart';
 
-class Profilescreen extends StatelessWidget {
+String logginedUserProfileImage = '';
+String profilepageUserId = '';
+String profileuserName = '';
+String coverImageUrl = '';
+
+LoginUserModel userdetails = LoginUserModel(
+    id: '',
+    userName: '',
+    email: '',
+    phone: '',
+    online: true,
+    blocked: false,
+    verified: false,
+    role: '',
+    isPrivate: false,
+    createdAt: DateTime(20242024 - 08 - 14),
+    updatedAt: DateTime(20242024 - 08 - 14),
+    profilePic: '',
+    backGroundImage: '');
+
+
+
+class Profilescreen extends StatefulWidget {
   const Profilescreen({super.key});
 
   @override
+  State<Profilescreen> createState() => _ProfilescreenState();
+  
+}
+
+class _ProfilescreenState extends State<Profilescreen> {
+  @override
+  void initState() {
+  context.read<LoginUserDetailsBloc>().add(OnLoginedUserDataFetchEvent());
+
+    super.initState();
+  }
+  @override
   Widget build(BuildContext context) {
+     var size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
-        body: settingsListTile(
-          onTap: ()async{
-            confirmationDialog(
-              context: context, 
-              title: 'Log Out!', 
-              content: "Are you sure ?", 
-              confirmButtonText: "confirm", 
-              cancelButtonText: "cancel", 
-              onConfirm: ()async{
-                await clearUserSession();
-                await googleSignOut();
-                currentPage.value=0;
-                if(context.mounted){
-                  Navigator.pushAndRemoveUntil(
-                    context, MaterialPageRoute(
-                      builder: (context)=> SigninPage()), (Route<dynamic>route)=>false);
-                }
-              });
-          }, 
-          leading: const Icon(Icons.logout), 
-          title: 'Log Out', 
-          trailing: const Icon(Icons.arrow_forward_ios, size: 20,)),
+        appBar: AppBar(
+          centerTitle: true,
+          automaticallyImplyLeading: false,
+          title: const Text('Profile',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w500,
+              )),
+          actions: [
+            IconButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const SettingScreen(),
+                  ),
+                );
+              },
+              icon: const Icon(Icons.settings),
+            )
+          ],
+        ),
+        body: SafeArea(
+          child: DefaultTabController(
+            length: 2, 
+            child: BlocBuilder<LoginUserDetailsBloc, LoginUserDetailsState>(
+              builder:(context, state) {
+                if(state is LoginUserDetailsDataFetchSuccesState){
+                  profileuserName =
+                    state.userModel.name ?? state.userModel.userName;
+                logginedUserProfileImage = state.userModel.profilePic;
+                profilepageUserId = state.userModel.id;
+                userdetails = state.userModel;
+                coverImageUrl = state.userModel.backGroundImage;
+                return NestedScrollView(
+                  headerSliverBuilder: (context, innerBoxIsScrolled){
+                    return [
+                      SliverToBoxAdapter(
+                        child: ProfileSession1(
+                          media: size, 
+                          profileImage: logginedUserProfileImage, 
+                          coverImage: coverImageUrl, 
+                          userName: profileuserName, 
+                          bio: state.userModel.bio ?? '', 
+                          onEditProfile: (){
+                             Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (ctx) => EditProfileScreen(
+                                  cvImage: coverImageUrl,
+                                  prImage: logginedUserProfileImage,
+                                ),
+                              ),
+                            );
+                          }),
+                      ),
+                    ];
+                  },
+                   body: Container()
+                   );
+                }else if (state is LoginUserDetailsDataFetchLoadingState) {
+                return profileImageShimmerContainer(context);
+              }else {
+                return const Center(child: Text('Failed to load profile'));
+              }
+              },))),
       ),
     );
   }
