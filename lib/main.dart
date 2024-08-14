@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:frenzy/firebase_options.dart';
 import 'package:frenzy/utils/themes.dart';
 import 'package:frenzy/views/bloc/addpost/bloc/addpost_bloc.dart';
+import 'package:frenzy/views/bloc/edit_user_profile/edit_user_profile_bloc.dart';
 import 'package:frenzy/views/bloc/fetch_followers_bloc/fetch_followers_bloc.dart';
 import 'package:frenzy/views/bloc/fetch_following_bloc/fetch_following_bloc.dart';
 import 'package:frenzy/views/bloc/fetch_my_post/bloc/fetchmypost_bloc.dart';
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider(create: (context)=>EditUserProfileBloc()),
         BlocProvider(create: (context)=>FetchSavedPostsBloc()),
         BlocProvider(create: (context)=>FetchFollowingBloc()),
         BlocProvider(create: (context)=>FetchFollowersBloc()),
