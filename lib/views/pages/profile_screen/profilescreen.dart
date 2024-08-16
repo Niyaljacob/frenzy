@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:frenzy/model/user_suggestions/logined_user_details_model.dart';
+import 'package:frenzy/views/bloc/fetch_followers_bloc/fetch_followers_bloc.dart';
+import 'package:frenzy/views/bloc/fetch_following_bloc/fetch_following_bloc.dart';
+import 'package:frenzy/views/bloc/fetch_my_post/bloc/fetchmypost_bloc.dart';
+import 'package:frenzy/views/bloc/fetch_saved_post/fetch_saved_posts_bloc.dart';
 import 'package:frenzy/views/bloc/login_user_details_bloc/login_user_details_bloc.dart';
 import 'package:frenzy/views/pages/profile_screen/edit_profile/edit_profile_screen.dart';
 import 'package:frenzy/views/pages/profile_screen/setting_page/setting_screen.dart';
@@ -41,7 +45,10 @@ class _ProfilescreenState extends State<Profilescreen> {
   @override
   void initState() {
   context.read<LoginUserDetailsBloc>().add(OnLoginedUserDataFetchEvent());
-
+  context.read<FetchFollowersBloc>().add(OnfetchAllFollowersEvent());
+  context.read<FetchFollowingBloc>().add(OnFetchFollowingUsersEvent());
+  context.read<FetchmypostBloc>().add(FetchAllMyPostsEvent());
+  context.read<FetchSavedPostsBloc>().add(SavedPostsInitialFetchEvent());
     super.initState();
   }
   @override
@@ -67,7 +74,7 @@ class _ProfilescreenState extends State<Profilescreen> {
                   ),
                 );
               },
-              icon: const Icon(Icons.settings),
+              icon: const Icon(Icons.menu),
             )
           ],
         ),
@@ -104,16 +111,64 @@ class _ProfilescreenState extends State<Profilescreen> {
                             );
                           }),
                       ),
+                      SliverToBoxAdapter(
+                        child: ProfileSession2(
+                          onPostsTap: () {
+                            if (context.read<FetchmypostBloc>().state
+                                is FetchMyPostSuccesState) {
+                              // Navigator.of(context).push(
+                              //   MaterialPageRoute(
+                              //     builder: (context) => ScreenMyPost(
+                              //       index: 0,
+                              //       post: (context.read<FetchMyPostBloc>().state
+                              //               as FetchMyPostSuccesState)
+                              //           .posts,
+                              //     ),
+                              //   ),
+                              // );
+                            }
+                          },
+                          onFollowersTap: () {
+                            if (context.read<FetchFollowersBloc>().state
+                                is FetchFollowersSuccesState) {
+                              // Navigator.of(context).push(
+                              //   MaterialPageRoute(
+                              //     builder: (ctx) => ScreenFollowers(
+                              //       model: (context
+                              //               .read<FetchFollowersBloc>()
+                              //               .state as FetchFollowersSuccesState)
+                              //           .followersModel,
+                              //     ),
+                              //   ),
+                              // );
+                            }
+                          },
+                          onFollowingTap: () {
+                            if (context.read<FetchFollowingBloc>().state
+                                is FetchFollowingSuccesState) {
+                              // Navigator.of(context).push(
+                              //   MaterialPageRoute(
+                              //     builder: (ctx) => const ScreenFollowing(),
+                              //   ),
+                              // );
+                            }
+                          },
+                        ),
+                      ),
+                      
                     ];
                   },
-                   body: Container()
+                   body: const ProfileSession3(),
                    );
                 }else if (state is LoginUserDetailsDataFetchLoadingState) {
                 return profileImageShimmerContainer(context);
               }else {
                 return const Center(child: Text('Failed to load profile'));
               }
-              },))),
+              },
+              )
+              )
+              ),
       ),
     );
   }

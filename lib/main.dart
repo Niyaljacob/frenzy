@@ -10,6 +10,7 @@ import 'package:frenzy/views/bloc/fetch_following_bloc/fetch_following_bloc.dart
 import 'package:frenzy/views/bloc/fetch_my_post/bloc/fetchmypost_bloc.dart';
 import 'package:frenzy/views/bloc/fetch_saved_post/fetch_saved_posts_bloc.dart';
 import 'package:frenzy/views/bloc/forgot_password_bloc/bloc/forgotpassword_bloc.dart';
+import 'package:frenzy/views/bloc/get_comment_bloc/get_comments_bloc.dart';
 import 'package:frenzy/views/bloc/login_user_details_bloc/login_user_details_bloc.dart';
 import 'package:frenzy/views/bloc/signin/bloc/signin_bloc.dart';
 import 'package:frenzy/views/bloc/signup/otpverification_register/bloc/otp_verification_bloc.dart';
@@ -32,6 +33,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider(create: (context)=>GetCommentsBloc()),
         BlocProvider(create: (context)=>EditUserProfileBloc()),
         BlocProvider(create: (context)=>FetchSavedPostsBloc()),
         BlocProvider(create: (context)=>FetchFollowingBloc()),

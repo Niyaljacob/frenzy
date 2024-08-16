@@ -31,7 +31,7 @@ class PostCard extends StatelessWidget {
       children: [
         // Profile Section
         Container(
-          color: greyNew.withOpacity(0.4), // Background color if needed
+          color: Colors.black,
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 10),
             child: Row(

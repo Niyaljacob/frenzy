@@ -207,6 +207,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                       color: primary);
                                 }
                                 return customMaterialButton(
+                                  context: context,
                                   borderRadius: 20,
                                   onPressed: () {
                                     if (_formKey.currentState!.validate()) {
