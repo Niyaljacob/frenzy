@@ -1,10 +1,12 @@
 
 import 'package:frenzy/utils/functions/sigin_with_google.dart';
+import 'package:frenzy/views/bloc/get_comment_bloc/get_comments_bloc.dart';
+import 'package:frenzy/views/pages/common_widgets/function_widgets/comment_bottom_sheet.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:frenzy/model/my_post_model/my_post_model.dart';
-import 'package:frenzy/model/user_suggestions/comment_model.dart';
+import 'package:frenzy/model/common_model/comment_model.dart';
 import 'package:frenzy/views/bloc/fetch_my_post/bloc/fetchmypost_bloc.dart';
 import 'package:frenzy/views/pages/profile_screen/widgets/my_post_listing_page.dart';
 import 'package:frenzy/views/pages/profile_screen/widgets/shimmer_widget.dart';

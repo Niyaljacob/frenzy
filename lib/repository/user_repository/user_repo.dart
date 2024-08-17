@@ -83,6 +83,35 @@ class UserRepo {
     }
   }
 
+
+  //follow user
+  static Future followUser({required String followeesId}) async {
+    try {
+      final token = await getUsertoken();
+      var response = client.post(
+          Uri.parse(
+              '${ApiEndpoints.baseUrl}${ApiEndpoints.followUser}/$followeesId'),
+          headers: {'Authorization': 'Bearer $token'});
+      return response;
+    } catch (e) {
+      log(e.toString());
+    }
+  }
+
+  //unfollow user
+  static Future unfollowUser({required String followeesId}) async {
+    try {
+      final token = await getUsertoken();
+      var response = client.put(
+          Uri.parse(
+              '${ApiEndpoints.baseUrl}${ApiEndpoints.unfollowUser}/$followeesId'),
+          headers: {'Authorization': 'Bearer $token'});
+      return response;
+    } catch (e) {
+      log(e.toString());
+    }
+  }
+
   static Future editProfile(
       {required String image,
     required  String name,

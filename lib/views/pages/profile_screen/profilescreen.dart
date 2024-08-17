@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:frenzy/model/user_suggestions/logined_user_details_model.dart';
+import 'package:frenzy/model/common_model/logined_user_details_model.dart';
 import 'package:frenzy/views/bloc/fetch_followers_bloc/fetch_followers_bloc.dart';
 import 'package:frenzy/views/bloc/fetch_following_bloc/fetch_following_bloc.dart';
 import 'package:frenzy/views/bloc/fetch_my_post/bloc/fetchmypost_bloc.dart';
 import 'package:frenzy/views/bloc/fetch_saved_post/fetch_saved_posts_bloc.dart';
 import 'package:frenzy/views/bloc/login_user_details_bloc/login_user_details_bloc.dart';
 import 'package:frenzy/views/pages/profile_screen/edit_profile/edit_profile_screen.dart';
+import 'package:frenzy/views/pages/profile_screen/my_post/screen_my_post.dart';
 import 'package:frenzy/views/pages/profile_screen/setting_page/setting_screen.dart';
 import 'package:frenzy/views/pages/profile_screen/widgets/profile_sessions.dart';
 import 'package:frenzy/views/pages/profile_screen/widgets/shimmer_widget.dart';
@@ -116,16 +117,16 @@ class _ProfilescreenState extends State<Profilescreen> {
                           onPostsTap: () {
                             if (context.read<FetchmypostBloc>().state
                                 is FetchMyPostSuccesState) {
-                              // Navigator.of(context).push(
-                              //   MaterialPageRoute(
-                              //     builder: (context) => ScreenMyPost(
-                              //       index: 0,
-                              //       post: (context.read<FetchMyPostBloc>().state
-                              //               as FetchMyPostSuccesState)
-                              //           .posts,
-                              //     ),
-                              //   ),
-                              // );
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => ScreenMyPost(
+                                    index: 0,
+                                    post: (context.read<FetchmypostBloc>().state
+                                            as FetchMyPostSuccesState)
+                                        .posts,
+                                  ),
+                                ),
+                              );
                             }
                           },
                           onFollowersTap: () {

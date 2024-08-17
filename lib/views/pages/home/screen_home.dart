@@ -4,9 +4,14 @@ import 'package:frenzy/views/pages/home/widgets/post_card.dart';
 import 'package:frenzy/views/pages/suggestion/suggestion.dart';
 
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
    final Size screenSize = MediaQuery.of(context).size;

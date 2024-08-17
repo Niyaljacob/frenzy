@@ -3,7 +3,7 @@ import 'dart:convert';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:frenzy/model/user_suggestions/following_model.dart';
+import 'package:frenzy/model/common_model/following_model.dart';
 import 'package:frenzy/repository/user_repository/user_repo.dart';
 import 'package:http/http.dart';
 

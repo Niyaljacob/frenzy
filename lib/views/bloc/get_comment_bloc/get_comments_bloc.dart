@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:bloc/bloc.dart';
-import 'package:frenzy/model/user_suggestions/comment_model.dart';
+import 'package:frenzy/model/common_model/comment_model.dart';
 import 'package:frenzy/repository/post_repo/post_repo.dart';
 import 'package:http/http.dart';
 import 'package:meta/meta.dart';

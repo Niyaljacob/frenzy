@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:bloc/bloc.dart';
-import 'package:frenzy/model/user_suggestions/logined_user_details_model.dart';
+import 'package:frenzy/model/common_model/logined_user_details_model.dart';
 import 'package:frenzy/repository/user_repository/user_repo.dart';
 // ignore: depend_on_referenced_packages
 import 'package:meta/meta.dart';
