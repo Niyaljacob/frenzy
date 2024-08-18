@@ -5,6 +5,7 @@ import 'package:bloc/bloc.dart';
 import 'package:frenzy/model/common_model/comment_model.dart';
 import 'package:frenzy/repository/post_repo/post_repo.dart';
 import 'package:http/http.dart';
+// ignore: depend_on_referenced_packages
 import 'package:meta/meta.dart';
 
 part 'get_comments_event.dart';

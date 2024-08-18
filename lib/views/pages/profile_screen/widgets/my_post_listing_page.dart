@@ -5,6 +5,7 @@ import 'package:frenzy/model/my_post_model/my_post_model.dart';
 import 'package:frenzy/utils/constance.dart';
 import 'package:frenzy/views/bloc/fetch_my_post/bloc/fetchmypost_bloc.dart';
 import 'package:frenzy/views/pages/common_widgets/function_widgets/showdialog.dart';
+import 'package:frenzy/views/pages/profile_screen/my_post/update_user_post/update_user_post.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:readmore/readmore.dart';
 
@@ -57,7 +58,7 @@ class MyPostListingPageTile extends StatelessWidget {
                       color: whiteColor,
                       borderRadius: BorderRadius.circular(100)),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
                 Column(
@@ -75,13 +76,13 @@ class MyPostListingPageTile extends StatelessWidget {
                 PopupMenuButton<String>(
                   onSelected: (String result) {
                     if (result == 'Edit') {
-                      // Navigator.push(
-                      //     context,
-                      //     MaterialPageRoute(
-                      //       builder: (context) => ScreenUpdateUserPost(
-                      //         model: post[index],
-                      //       ),
-                      //     ));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ScreenUpdateUserPost(
+                              model: post[index],
+                            ),
+                          ));
                     } else if (result == 'Delete') {
                       showConfirmationDialog(
                           context: context,

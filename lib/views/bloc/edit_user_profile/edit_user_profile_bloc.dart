@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:bloc/bloc.dart';
 import 'package:frenzy/repository/user_repository/user_repo.dart';
 import 'package:http/http.dart';
+// ignore: depend_on_referenced_packages
 import 'package:meta/meta.dart';
 
 part 'edit_user_profile_event.dart';

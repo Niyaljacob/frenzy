@@ -9,7 +9,6 @@ import 'package:http/http.dart';
 
 
 
-import 'package:meta/meta.dart';
 
 part 'fetch_following_event.dart';
 part 'fetch_following_state.dart';

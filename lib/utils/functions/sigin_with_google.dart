@@ -41,6 +41,7 @@ Future<void> googleSignOut() async {
 String formatDate(String inputDate) {
   try {
     // Debug print to check the input date
+    // ignore: avoid_print
     print('Input date: $inputDate');
     
     // Define the input format
@@ -74,6 +75,7 @@ String formatDate(String inputDate) {
     }
   } catch (e) {
     // Print the error for debugging
+    // ignore: avoid_print
     print('Error parsing date: $e');
     return 'Invalid date';
   }

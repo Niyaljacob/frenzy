@@ -20,18 +20,19 @@ Future<void> showConfirmationDialog({
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15.0),
         ),
-        title: Text(title, style: TextStyle(
-  fontWeight: FontWeight.bold,
-  fontSize: 20,
-)),
+        title: Text(title,
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
+            )),
         content: SingleChildScrollView(
           child: ListBody(
             children: <Widget>[
               Text(
                 content,
-                style: TextStyle(
-  fontSize: 16,
-),
+                style: const TextStyle(
+                  fontSize: 16,
+                ),
               ),
             ],
           ),
@@ -46,10 +47,10 @@ Future<void> showConfirmationDialog({
             },
             child: Text(
               cancelButtonText,
-              style: TextStyle(
-  color: red,
-  fontSize: 16,
-),
+              style: const TextStyle(
+                color: red,
+                fontSize: 16,
+              ),
             ),
           ),
           TextButton(
@@ -59,10 +60,11 @@ Future<void> showConfirmationDialog({
 
               // Dismiss the dialog
             },
-            child: Text(confirmButtonText, style: TextStyle(
-  color: green,
-  fontSize: 16,
-)),
+            child: Text(confirmButtonText,
+                style: const TextStyle(
+                  color: green,
+                  fontSize: 16,
+                )),
           ),
         ],
       );

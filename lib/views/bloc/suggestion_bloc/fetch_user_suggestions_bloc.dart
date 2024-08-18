@@ -7,6 +7,7 @@ import 'package:frenzy/repository/user_repository/user_repo.dart';
 
 
 import 'package:http/http.dart';
+// ignore: depend_on_referenced_packages
 import 'package:meta/meta.dart';
 
 part 'fetch_user_suggestions_event.dart';

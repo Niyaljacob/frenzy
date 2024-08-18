@@ -13,7 +13,8 @@ import 'package:frenzy/views/pages/common_widgets/function_widgets/snackbarcusto
 import 'package:frenzy/views/pages/profile_screen/widgets/custom_material_button.dart';
 
 class EditProfileScreen extends StatefulWidget {
-  const EditProfileScreen({super.key, required this.cvImage, required this.prImage});
+  const EditProfileScreen(
+      {super.key, required this.cvImage, required this.prImage});
   final String cvImage;
   final String prImage;
 
@@ -129,9 +130,10 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                                 BorderRadius.circular(100),
                                             boxShadow: [
                                               BoxShadow(
-                                                color: Colors.black.withOpacity(0.2),
+                                                color: Colors.black
+                                                    .withOpacity(0.2),
                                                 blurRadius: 10,
-                                                offset: Offset(0, 5),
+                                                offset: const Offset(0, 5),
                                               ),
                                             ],
                                           ),
@@ -176,7 +178,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                           );
                         },
                       ),
-                      SizedBox(height: 80),
+                      const SizedBox(height: 80),
                       Form(
                         key: _formKey,
                         child: Column(
@@ -185,18 +187,16 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                               hintText: 'Edit name',
                               controller: nameController,
                               validator: validateUsername,
-                              
                             ),
-                            SizedBox(height: 20),
+                            const SizedBox(height: 20),
                             CustomTextField(
-                              
                               hintText: 'Bio',
                               controller: bioController,
                               validator: validateBio,
-                             
                             ),
-                            SizedBox(height: 40),
-                            BlocBuilder<EditUserProfileBloc, EditUserProfileState>(
+                            const SizedBox(height: 40),
+                            BlocBuilder<EditUserProfileBloc,
+                                EditUserProfileState>(
                               builder: (context, state) {
                                 if (state is EditUserProfileLoadingState ||
                                     state

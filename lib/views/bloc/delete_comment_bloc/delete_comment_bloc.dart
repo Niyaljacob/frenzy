@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:bloc/bloc.dart';
 import 'package:frenzy/repository/post_repo/post_repo.dart';
 import 'package:http/http.dart';
+// ignore: depend_on_referenced_packages
 import 'package:meta/meta.dart';
 
 part 'delete_comment_event.dart';

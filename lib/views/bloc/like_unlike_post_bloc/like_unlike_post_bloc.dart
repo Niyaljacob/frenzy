@@ -4,7 +4,6 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:frenzy/repository/post_repo/post_repo.dart';
 import 'package:http/http.dart';
-import 'package:meta/meta.dart';
 
 part 'like_unlike_post_event.dart';
 part 'like_unlike_post_state.dart';

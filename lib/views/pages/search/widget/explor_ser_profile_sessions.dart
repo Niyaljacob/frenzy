@@ -17,6 +17,7 @@ import 'package:frenzy/views/pages/profile_screen/widgets/user_name_bio.dart';
 import 'package:frenzy/views/pages/search/screen_others_user_post.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
+// ignore: must_be_immutable
 class ExploreUserProfileSession1 extends StatelessWidget {
   final Size media;
   final String profileImage;

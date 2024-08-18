@@ -2,7 +2,6 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:frenzy/repository/user_repository/user_repo.dart';
 import 'package:http/http.dart';
-import 'package:meta/meta.dart';
 
 part 'follow_unfollow_event.dart';
 part 'follow_unfollow_state.dart';

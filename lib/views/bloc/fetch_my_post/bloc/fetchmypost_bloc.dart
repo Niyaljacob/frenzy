@@ -45,6 +45,27 @@ class FetchmypostBloc extends Bloc<FetchmypostEvent, FetchmypostState> {
         }
       }
     );
+    on<OnEditPostButtonClicked>(
+      (event, emit) async {
+        emit(EditUserPostLoadingState());
+        final response = await PostRepository.editPost(
+            description: event.description,
+            image: event.image,
+            postId: event.postId,
+            imageUrl: event.imageUrl);
+        if (response != null && response.statusCode == 200) {
+          add(FetchAllMyPostsEvent());
+          return emit(EditUserPostSuccesState());
+        } else if (response != null && response.statusCode == 500) {
+          return emit(EditUserPosterrorState(error: 'Server not responding'));
+        } else if (response != null) {
+          final responseBody = jsonDecode(response.body);
+          return emit(EditUserPosterrorState(error: responseBody['message']));
+        } else {
+          return emit(EditUserPosterrorState(error: 'Something went wrong'));
+        }
+      },
+    );
   }
 
   List<MyPostModel> parsePostsFromJson(String jsonString) {
