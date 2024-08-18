@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:frenzy/utils/constance.dart';
 import 'package:frenzy/views/pages/home/widgets/post_card.dart';
-import 'package:frenzy/views/pages/suggestion/suggestion.dart';
+import 'package:frenzy/views/pages/home/suggestion/suggestion.dart';
 
-
+String logginedUserToken = '';
+String logginedUserId = '';
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 

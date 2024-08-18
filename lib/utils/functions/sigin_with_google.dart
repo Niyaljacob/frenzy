@@ -1,9 +1,11 @@
 
 
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
+import 'package:frenzy/model/common_model/post_model.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:intl/intl.dart';
 //google login
@@ -75,4 +77,9 @@ String formatDate(String inputDate) {
     print('Error parsing date: $e');
     return 'Invalid date';
   }
+}
+
+List<Post> parsePosts(String responseBody) {
+  final parsed = jsonDecode(responseBody).cast<Map<String, dynamic>>();
+  return parsed.map<Post>((json) => Post.fromJson(json)).toList();
 }
