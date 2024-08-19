@@ -170,8 +170,8 @@ class ProfileSession3 extends StatelessWidget {
             unselectedLabelColor: grey,
             indicatorColor: primary,
             tabs: [
-              Tab(text: 'My Posts'),
-              Tab(text: 'Saved Posts'),
+              Tab(text: 'My Post'),
+              Tab(text: 'Saved Post'),
             ],
           ),
         ),

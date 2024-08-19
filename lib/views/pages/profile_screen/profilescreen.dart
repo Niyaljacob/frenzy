@@ -7,6 +7,7 @@ import 'package:frenzy/views/bloc/fetch_my_post/bloc/fetchmypost_bloc.dart';
 import 'package:frenzy/views/bloc/fetch_saved_post/fetch_saved_posts_bloc.dart';
 import 'package:frenzy/views/bloc/login_user_details_bloc/login_user_details_bloc.dart';
 import 'package:frenzy/views/pages/profile_screen/edit_profile/edit_profile_screen.dart';
+import 'package:frenzy/views/pages/profile_screen/followers_page/followers_screen.dart';
 import 'package:frenzy/views/pages/profile_screen/my_post/screen_my_post.dart';
 import 'package:frenzy/views/pages/profile_screen/setting_page/setting_screen.dart';
 import 'package:frenzy/views/pages/profile_screen/widgets/profile_sessions.dart';
@@ -132,26 +133,22 @@ class _ProfilescreenState extends State<Profilescreen> {
                           onFollowersTap: () {
                             if (context.read<FetchFollowersBloc>().state
                                 is FetchFollowersSuccesState) {
-                              // Navigator.of(context).push(
-                              //   MaterialPageRoute(
-                              //     builder: (ctx) => ScreenFollowers(
-                              //       model: (context
-                              //               .read<FetchFollowersBloc>()
-                              //               .state as FetchFollowersSuccesState)
-                              //           .followersModel,
-                              //     ),
-                              //   ),
-                              // );
+                               Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (ctx) => ScreenFollowers(
+                                    model: (context
+                                            .read<FetchFollowersBloc>()
+                                            .state as FetchFollowersSuccesState)
+                                        .followersModel,
+                                  ),
+                                ),
+                              );
                             }
                           },
                           onFollowingTap: () {
                             if (context.read<FetchFollowingBloc>().state
                                 is FetchFollowingSuccesState) {
-                              // Navigator.of(context).push(
-                              //   MaterialPageRoute(
-                              //     builder: (ctx) => const ScreenFollowing(),
-                              //   ),
-                              // );
+                              
                             }
                           },
                         ),

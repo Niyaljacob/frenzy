@@ -52,74 +52,65 @@ class ExploreUserProfileSession1 extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(right: 10),
               child: BlocBuilder<FetchFollowingBloc, FetchFollowingState>(
-                builder: (context, state) {
-                  if (state is FetchFollowingSuccesState) {
-                    final FollowingsModel followingsModel = state.model;
-                    followings = followingsModel.following;
-                    return customMaterialButtonround(
-                      borderRadius: 10,
-                      color: primary,
-                      onPressed: () {
-                        bool isFollowing = followings
-                            .any((following) => following.id == user.id);
-                        if (isFollowing) {
-                          followings
-                              .removeWhere((element) => element.id == user.id);
-                          context.read<FollowUnfollowBloc>().add(
-                              OnUnFollowButtonClickedEvent(
-                                  followeesId: user.id));
-                          context
-                              .read<FetchFollowingBloc>()
-                              .add(OnFetchFollowingUsersEvent());
-                          context.read<GetConnectionsBloc>().add(
-                              ConnectionsInitilFetchEvent(userId: user.id));
-                        } else {
-                          followings.add(Follower(
-                              id: user.id,
-                              userName: user.userName,
-                              email: user.email,
-                              password: user.password ?? '',
-                              phone: user.phone,
-                              online: user.online,
-                              blocked: user.blocked,
-                              verified: user.verified,
-                              role: user.role,
-                              isPrivate: user.isPrivate,
-                              createdAt: formatDate(user.createdAt.toString()),
-                              updatedAt: formatDate(user.updatedAt.toString()),
-                              v: user.v,
-                              profilePic: user.profilePic,
-                              backGroundImage: user.backGroundImage));
-                          context.read<FollowUnfollowBloc>().add(
-                              OnFollowButtonClickedEvent(followeesId: user.id));
-                          context
-                              .read<FetchFollowingBloc>()
-                              .add(OnFetchFollowingUsersEvent());
-                          context.read<GetConnectionsBloc>().add(
-                              ConnectionsInitilFetchEvent(userId: user.id));
-                        }
-                      },
-                      text:
-                          followings.any((following) => following.id == user.id)
-                              ? 'Unfollow'
-                              : 'Follow',
-                      width: media.height * 0.1,
-                      height: media.height * 0.05,
-                      textStyle: const TextStyle(fontSize: 16),
-                    );
-                  } else {
-                    return customMaterialButtonround(
-                      borderRadius: 10,
-                      color: primary,
-                      onPressed: onEditProfile,
-                      text: '',
-                      width: media.height * 0.1,
-                      height: media.height * 0.05,
-                      textStyle: const TextStyle(fontSize: 16),
-                    );
-                  }
-                },
-              ),
+  builder: (context, state) {
+    String buttonText = 'Follow'; // Default text
+    bool isFollowing = false;
+
+    if (state is FetchFollowingSuccesState) {
+      final FollowingsModel followingsModel = state.model;
+      followings = followingsModel.following;
+
+      // Check if the user is already being followed
+      isFollowing = followings.any((following) => following.id == user.id);
+      buttonText = isFollowing ? 'Unfollow' : 'Follow';
+    }
+
+    return customMaterialButtonround(
+      borderRadius: 10,
+      color: primary,
+      onPressed: () {
+        if (state is FetchFollowingSuccesState) {
+          if (isFollowing) {
+            // If already following, unfollow
+            followings.removeWhere((element) => element.id == user.id);
+            context.read<FollowUnfollowBloc>().add(
+                OnUnFollowButtonClickedEvent(followeesId: user.id));
+          } else {
+            // If not following, follow
+            followings.add(Follower(
+                id: user.id,
+                userName: user.userName,
+                email: user.email,
+                password: user.password ?? '',
+                phone: user.phone,
+                online: user.online,
+                blocked: user.blocked,
+                verified: user.verified,
+                role: user.role,
+                isPrivate: user.isPrivate,
+                createdAt: formatDate(user.createdAt.toString()),
+                updatedAt: formatDate(user.updatedAt.toString()),
+                v: user.v,
+                profilePic: user.profilePic,
+                backGroundImage: user.backGroundImage));
+            context.read<FollowUnfollowBloc>().add(
+                OnFollowButtonClickedEvent(followeesId: user.id));
+          }
+
+          // Trigger UI updates
+          context.read<FetchFollowingBloc>().add(OnFetchFollowingUsersEvent());
+          context.read<GetConnectionsBloc>().add(
+              ConnectionsInitilFetchEvent(userId: user.id));
+        }
+      },
+      text: buttonText,
+      width: media.height * 0.1,
+      height: media.height * 0.05,
+      textStyle: const TextStyle(fontSize: 16),
+    );
+  },
+),
+
             ),
             MaterialButton(
               onPressed: () {},
@@ -136,7 +127,6 @@ class ExploreUserProfileSession1 extends StatelessWidget {
     );
   }
 }
-
 class ExploreUserProfileSessions2 extends StatelessWidget {
   final VoidCallback onPostsTap;
   final VoidCallback onFollowersTap;
