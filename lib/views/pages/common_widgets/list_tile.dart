@@ -29,6 +29,7 @@ class CustomListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      
       onTap: onTap,
       leading: Container(
         height: imageSize,
