@@ -1,9 +1,12 @@
 
+import 'package:frenzy/model/common_model/comment_model.dart';
 import 'package:frenzy/utils/functions/sigin_with_google.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:frenzy/model/my_post_model/my_post_model.dart';
 import 'package:frenzy/views/bloc/fetch_my_post/bloc/fetchmypost_bloc.dart';
+import 'package:frenzy/views/bloc/get_comment_bloc/get_comments_bloc.dart';
+import 'package:frenzy/views/pages/common_widgets/function_widgets/comment_page.dart';
 import 'package:frenzy/views/pages/profile_screen/widgets/my_post_listing_page.dart';
 import 'package:frenzy/views/pages/profile_screen/widgets/shimmer_widget.dart';
 import 'package:shimmer/shimmer.dart';
@@ -18,7 +21,8 @@ class ScreenMyPost extends StatefulWidget {
 
 class _ScreenMyPostState extends State<ScreenMyPost> {
   TextEditingController commentController = TextEditingController();
-
+  final _formkey = GlobalKey<FormState>();
+  final List<Comment> _comments = [];
 
   @override
   void initState() {
@@ -69,7 +73,14 @@ class _ScreenMyPostState extends State<ScreenMyPost> {
                   commentCount: '2', 
                   likeButtonPressed: () {},
                   commentButtonPressed: () {
-                   
+                    context.read<GetCommentsBloc>().add(
+                        CommentsFetchEvent(postId: postItem.id.toString()));
+                    commentBottomSheet(context, postItem, commentController,
+                        formkey: _formkey,
+                        // userName: profileuserName,
+                        // profiePic: logginedUserProfileImage,
+                        comments: _comments,
+                        id: postItem.id.toString());
                   },
                   index: index,
                 );

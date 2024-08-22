@@ -3,9 +3,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:frenzy/model/common_model/comment_model.dart';
 import 'package:frenzy/model/common_model/post_model.dart';
 import 'package:frenzy/utils/functions/sigin_with_google.dart';
+import 'package:frenzy/views/bloc/get_comment_bloc/get_comments_bloc.dart';
 import 'package:frenzy/views/bloc/profile_post_bloc/profile_bloc.dart';
+import 'package:frenzy/views/pages/common_widgets/function_widgets/comment_page.dart';
 import 'package:frenzy/views/pages/profile_screen/widgets/shimmer_widget.dart';
 import 'package:frenzy/views/pages/search/widget/main_tile.dart';
 import 'package:shimmer/shimmer.dart';
@@ -14,7 +17,8 @@ class ScreenOtherUserPosts extends StatelessWidget {
   final List<Post> posts;
   ScreenOtherUserPosts({super.key, required this.posts});
   TextEditingController commentController = TextEditingController();
-
+   final _formkey = GlobalKey<FormState>();
+  final List<Comment> _commentss = [];
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +54,14 @@ class ScreenOtherUserPosts extends StatelessWidget {
                   statesaved: state,
                   likeButtonPressed: () {},
                   commentButtonPressed: ()async {
-                    
+                    context.read<GetCommentsBloc>().add(
+                        CommentsFetchEvent(postId: posts[index].id.toString()));
+                    commentBottomSheet(context, posts[index], commentController,
+                        formkey: _formkey,
+                        comments: _commentss,
+                        id: posts[index].id.toString());
+                    context.read<GetCommentsBloc>().add(
+                        CommentsFetchEvent(postId: posts[index].id.toString()));
                   });
             },
             itemCount: posts.length,

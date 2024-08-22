@@ -141,3 +141,57 @@ Widget shimmerTile() {
     ),
   );
 }
+
+Shimmer shimmerLoadingcomments(context) {
+  return Shimmer.fromColors(
+      direction: ShimmerDirection.ttb,
+      highlightColor: Theme.of(context).brightness == Brightness.light
+          ? Colors.grey.shade100
+          : grey,
+      baseColor: Theme.of(context).brightness == Brightness.light
+          ? Colors.grey.shade300
+          : grey,
+      child: ListView.builder(
+          itemCount: 5,
+          itemBuilder: (context, index) {
+            return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const CircleAvatar(
+                    radius: 25,
+                    backgroundColor: black,
+                  ),
+                 SizedBox(
+  width: 10,
+),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5),
+                            color: whiteColor,
+                          ),
+                          height: 20,
+                          width: MediaQuery.of(context).size.width,
+                        ),
+                        kheight,
+                        Container(
+                          height: 10,
+                          width: 100,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5),
+                            color: whiteColor,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            );
+          }));
+}

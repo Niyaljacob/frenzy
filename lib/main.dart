@@ -4,6 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:frenzy/firebase_options.dart';
 import 'package:frenzy/utils/themes.dart';
 import 'package:frenzy/views/bloc/addpost/bloc/addpost_bloc.dart';
+import 'package:frenzy/views/bloc/all_followers_posts_bloc/all_followers_posts_bloc.dart';
+import 'package:frenzy/views/bloc/comment_post_bloc/comment_post_bloc.dart';
 import 'package:frenzy/views/bloc/delete_comment_bloc/delete_comment_bloc.dart';
 import 'package:frenzy/views/bloc/edit_user_profile/edit_user_profile_bloc.dart';
 import 'package:frenzy/views/bloc/fetch_followers_bloc/fetch_followers_bloc.dart';
@@ -17,6 +19,7 @@ import 'package:frenzy/views/bloc/get_connection_bloc/get_connections_bloc.dart'
 import 'package:frenzy/views/bloc/like_unlike_post_bloc/like_unlike_post_bloc.dart';
 import 'package:frenzy/views/bloc/login_user_details_bloc/login_user_details_bloc.dart';
 import 'package:frenzy/views/bloc/profile_post_bloc/profile_bloc.dart';
+import 'package:frenzy/views/bloc/saved_post/saved_post_bloc.dart';
 import 'package:frenzy/views/bloc/signin/bloc/signin_bloc.dart';
 import 'package:frenzy/views/bloc/signup/otpverification_register/bloc/otp_verification_bloc.dart';
 import 'package:frenzy/views/bloc/signup/signup_bloc/sign_up_bloc.dart';
@@ -39,6 +42,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider(create: (context)=>SavedPostBloc()),
+        BlocProvider(create: (context)=>CommentPostBloc()),
+        BlocProvider(create: (context)=>AllFollowersPostsBloc()),
         BlocProvider(create: (context)=>LikeUnlikePostBloc()),
         BlocProvider(create: (context)=>GetConnectionsBloc()),
         BlocProvider(create: (context)=>ProfileBloc()),
