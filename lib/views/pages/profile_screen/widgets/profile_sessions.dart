@@ -197,7 +197,10 @@ class ProfileSession3 extends StatelessWidget {
                   }
                 },
               ),
-              const SavedPostsGrid(),
+              const Padding(
+                padding: EdgeInsets.all(8.0),
+                child: SavedPostsGrid(),
+              ),
             ],
           ),
         ),

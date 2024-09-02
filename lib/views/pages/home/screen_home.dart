@@ -7,6 +7,7 @@ import 'package:frenzy/views/bloc/all_followers_posts_bloc/all_followers_posts_b
 import 'package:frenzy/views/pages/home/suggestion/suggestion.dart';
 import 'package:frenzy/views/pages/home/widgets/post_listing.dart';
 import 'package:frenzy/views/pages/profile_screen/widgets/shimmer_widget.dart';
+import 'package:lottie/lottie.dart';
 import 'package:shimmer/shimmer.dart';
 
 String logginedUserToken = '';
@@ -118,20 +119,31 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               );
             } else {
-              return Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text('Something went wrong, try refreshing.'),
-                    const SizedBox(height: 20),
-                    TextButton(
-                      onPressed: _onRefresh,
-                      child: const Text('Refresh'),
-                    ),
-                  ],
-                ),
-              );
-            }
+            return Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Lottie.asset(
+                    'assets/Animation - 1724321708925.json', // Replace with your Lottie animation path
+                    width: 220,
+                    height: 200,
+                    fit: BoxFit.fill,
+                  ),
+                  const SizedBox(height: 20),
+                  const Text(
+                    "Start by visiting the suggestion page and following people to see their posts.",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 16),
+                  ),
+                  const SizedBox(height: 20),
+                  TextButton(
+                    onPressed: _onRefresh,
+                    child: const Text('Refresh'),
+                  ),
+                ],
+              ),
+            );
+          }
           },
         ),
       ),

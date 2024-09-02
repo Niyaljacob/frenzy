@@ -6,6 +6,7 @@ import 'package:frenzy/utils/constance.dart';
 import 'package:frenzy/views/bloc/fetch_saved_post/fetch_saved_posts_bloc.dart';
 import 'package:frenzy/views/pages/common_widgets/function_widgets/loading_button.dart';
 import 'package:frenzy/views/pages/profile_screen/my_post/screen_my_post.dart';
+import 'package:frenzy/views/pages/profile_screen/my_save_post/saved_post_screen.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -78,20 +79,17 @@ class SavedPostsGrid extends StatelessWidget {
               itemBuilder: (context, index) {
                 return GestureDetector(
                   onTap: (){
-
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context){
+                        return SavedPostScreen(model: state.posts);
+                      }));
                   },
-                    child: CachedNetworkImage(
+                    child: CachedNetworkImage( 
+                    placeholder: (context, url) {
+                      return LoadingAnimationWidget.fourRotatingDots(
+                          color: grey, size: 30);
+                    },
                     imageUrl: state.posts[index].postId.image,
                     fit: BoxFit.cover,
-                    placeholder: (context, url) {
-                      return Shimmer.fromColors(
-                        baseColor: Colors.grey[300]!,
-                        highlightColor: Colors.grey[100]!,
-                        child: Container(
-                          color: Colors.grey,
-                        ),
-                      );
-                    },
                   ),
                 );
               },
