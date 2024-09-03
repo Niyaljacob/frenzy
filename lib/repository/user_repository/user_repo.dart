@@ -184,4 +184,20 @@ class UserRepo {
       log(e.toString());
     }
   }
+
+
+
+  static Future searchAllUsers({required String query}) async {
+    try {
+      final token = await getUsertoken();
+      var response = await client.get(
+          Uri.parse(
+              '${ApiEndpoints.baseUrl}${ApiEndpoints.searchAllUsers}$query'),
+          headers: {'Authorization': 'Bearer $token'});
+      return response;
+    } catch (e) {
+      log(e.toString());
+    }
+  }
 }
+

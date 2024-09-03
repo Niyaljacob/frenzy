@@ -8,8 +8,7 @@ import 'package:frenzy/views/bloc/forgot_password_bloc/bloc/forgotpassword_state
 import 'package:frenzy/views/pages/common_widgets/class_widgets/textfield.dart';
 import 'package:frenzy/views/pages/common_widgets/function_widgets/custom_button.dart';
 import 'package:frenzy/views/pages/common_widgets/function_widgets/snackbarcustom.dart';
-import 'package:frenzy/views/pages/signin_page/forgotpassword/otp_forgotpassword/otp_forgot_verify.dart';
-
+import 'package:frenzy/views/pages/signin_page/signin.dart';
 
 class OtpForgotpasswordScreen extends StatelessWidget {
   final String email;
@@ -73,7 +72,20 @@ class OtpForgotpasswordScreen extends StatelessWidget {
                             },
                           ),
                           const SizedBox(height: 50),
-                          BlocBuilder<ForgotPasswordBloc, ForgotPasswordState>(
+                          BlocConsumer<ForgotPasswordBloc, ForgotPasswordState>(
+                            listener: (context, state) {
+                              if (state is ResetPasswordSuccesState) {
+                                // Show success snackbar and navigate to SigninPage
+                                customSnackbar(context, 'Password reset successful!', green);
+                                Navigator.pushAndRemoveUntil(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => SigninPage()),
+                                  (route) => false,
+                                );
+                              } else if (state is ResetPasswordErrorState) {
+                                customSnackbar(context, state.error, red);
+                              }
+                            },
                             builder: (context, state) {
                               if (state is ResetPasswordLoadingState) {
                                 return CustomButton(
@@ -92,12 +104,6 @@ class OtpForgotpasswordScreen extends StatelessWidget {
                                       OnResetPasswordButtonClickedEvent(
                                         email: email,
                                         password: _confirmPasswordController.text,
-                                      ),
-                                    );
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => OtpForgotVerify(email: email),
                                       ),
                                     );
                                   } else {

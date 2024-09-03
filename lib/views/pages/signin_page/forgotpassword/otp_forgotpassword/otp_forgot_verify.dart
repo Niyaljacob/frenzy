@@ -8,6 +8,7 @@ import 'package:frenzy/views/bloc/forgot_password_bloc/bloc/forgotpassword_state
 import 'package:frenzy/views/pages/common_widgets/function_widgets/custom_button.dart';
 import 'package:frenzy/views/pages/common_widgets/function_widgets/loading_button.dart';
 import 'package:frenzy/views/pages/common_widgets/function_widgets/snackbarcustom.dart';
+import 'package:frenzy/views/pages/signin_page/forgotpassword/otp_forgotpassword/otp_forgotpassword_screen.dart';
 import 'package:frenzy/views/pages/signin_page/signin.dart';
 import 'package:frenzy/views/pages/signup/otp_screen/widgets/otp_field.dart';
 
@@ -60,20 +61,13 @@ class _OtpForgotVerifyState extends State<OtpForgotVerify> {
   void debounceResendOtp() {
     if (_debouncerTime?.isActive ?? false) _debouncerTime!.cancel();
     _debouncerTime = Timer(const Duration(seconds: 1), () {
-      // Handle resend OTP logic here
       startTime();
     });
   }
 
   bool validateOtp() {
     String otp = _otpcontrollers.text.trim();
-    if (otp.isEmpty) {
-      return false;
-    }
-    if (otp.length != 4) {
-      return false;
-    }
-    if (!RegExp(r'^[0-9]+$').hasMatch(otp)) {
+    if (otp.isEmpty || otp.length != 4 || !RegExp(r'^[0-9]+$').hasMatch(otp)) {
       return false;
     }
     return true;
@@ -82,17 +76,16 @@ class _OtpForgotVerifyState extends State<OtpForgotVerify> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: true,
-      ),
+      appBar: AppBar(automaticallyImplyLeading: true),
       body: BlocConsumer<ForgotPasswordBloc, ForgotPasswordState>(
         listener: (context, state) {
           if (state is OtpverifiedSuccesState) {
             customSnackbar(context, "OTP verification success", primary);
-            _otpcontrollers.clear();
-            Navigator.of(context).pushAndRemoveUntil(
-              MaterialPageRoute(builder: (context) => SigninPage()),
-              (Route<dynamic> route) => false,
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (context) => OtpForgotpasswordScreen(email: widget.email),
+              ),
             );
           } else if (state is OtpverifiedErrorState) {
             customSnackbar(context, "Invalid OTP", red);
@@ -105,10 +98,10 @@ class _OtpForgotVerifyState extends State<OtpForgotVerify> {
               child: Column(
                 children: [
                   kheight,
-                  const 
-                      Text("Verification", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22)),
-                    
-                  
+                  const Text(
+                    "Verification",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
+                  ),
                   kheight30,
                   SizedBox(
                     height: 150,
@@ -116,7 +109,7 @@ class _OtpForgotVerifyState extends State<OtpForgotVerify> {
                     child: Image.asset(happyForgot),
                   ),
                   kheight20,
-                 forgotpassword3,
+                  forgotpassword3,
                   kheight20,
                   buildOtpTextField(context: context, controller: _otpcontrollers),
                   kheight20,
@@ -132,10 +125,7 @@ class _OtpForgotVerifyState extends State<OtpForgotVerify> {
                           if (validateOtp()) {
                             String otp = _otpcontrollers.text.trim();
                             context.read<ForgotPasswordBloc>().add(
-                              OnVerifyButtonClickedEvent(
-                                otp: otp,
-                                email: widget.email,
-                              ),
+                              OnVerifyButtonClickedEvent(otp: otp, email: widget.email),
                             );
                             _otpcontrollers.clear();
                           } else {
