@@ -12,29 +12,40 @@ Future<void> confirmationDialog({
 }) async {
   return showDialog<void>(
     context: context,
-    barrierDismissible: false, // user must tap button!
+    barrierDismissible: false, 
     builder: (BuildContext context) {
       return AlertDialog(
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15.0),
+          borderRadius: BorderRadius.circular(20.0), 
         ),
-        title: Text(
-          title,
-          style: const TextStyle(
-            color: red,
-            fontSize: 16,
-          ),
+        title: Row(
+          children: <Widget>[
+            const Icon(Icons.warning, color: Colors.orange, size: 30),
+            const SizedBox(width: 10),
+            Text(
+              title,
+              style: const TextStyle(
+                color: red,
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
         ),
         content: SingleChildScrollView(
-          child: ListBody(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(
-                content,
+                '$content 😢',
                 style: const TextStyle(
                   color: red,
                   fontSize: 16,
+                  fontWeight: FontWeight.w400,
                 ),
               ),
+              const SizedBox(height: 10),
+             
             ],
           ),
         ),
@@ -44,27 +55,39 @@ Future<void> confirmationDialog({
               if (onCancel != null) {
                 onCancel();
               }
-              Navigator.of(context).pop(); // Dismiss the dialog
+              Navigator.of(context).pop(); 
             },
+            style: TextButton.styleFrom(
+              
+              backgroundColor: Colors.grey.shade300,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+            ),
             child: Text(
               cancelButtonText,
               style: const TextStyle(
-                color: primary,
+                color: Colors.black,
                 fontSize: 16,
               ),
             ),
           ),
+          const SizedBox(width: 10),
           TextButton(
             onPressed: () async {
               Navigator.of(context).pop();
               await onConfirm();
-
-              // Dismiss the dialog
             },
+            style: TextButton.styleFrom(
+             
+              backgroundColor: red,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+            ),
             child: Text(
               confirmButtonText,
               style: const TextStyle(
-                color: primary,
                 fontSize: 16,
               ),
             ),
