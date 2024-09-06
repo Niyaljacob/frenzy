@@ -200,7 +200,9 @@ try{
         'postId': postId,
         'content': content
       };
-      var responce = await client.post(Uri.parse('${ApiEndpoints.baseUrl}${ApiEndpoints.commentPost}'),
+      var responce = await client.post(
+        Uri.parse(
+          '${ApiEndpoints.baseUrl}${ApiEndpoints.commentPost}/$postId'),
       body: jsonEncode(comment),
       headers: {
         'Authorization': 'Bearer $token',
@@ -220,7 +222,9 @@ try{
       static Future getAllComments({required String postId})async{
         try{
           final token = await getUsertoken();
-          var responce = await client.get(Uri.parse('${ApiEndpoints.baseUrl}${ApiEndpoints.getAllComments}'),
+          var responce = await client.get(
+            Uri.parse(
+              '${ApiEndpoints.baseUrl}${ApiEndpoints.getAllComments}/$postId'),
           headers: {'Authorization': 'Bearer $token'});
           debugPrint(responce.statusCode.toString());
           return responce;
