@@ -4,6 +4,7 @@ import 'package:frenzy/utils/constance.dart';
 import 'package:frenzy/views/bloc/fetch_followers_bloc/fetch_followers_bloc.dart';
 import 'package:frenzy/views/bloc/fetch_following_bloc/fetch_following_bloc.dart';
 import 'package:frenzy/views/bloc/fetch_my_post/bloc/fetchmypost_bloc.dart';
+import 'package:frenzy/views/bloc/fetch_saved_post/fetch_saved_posts_bloc.dart';
 import 'package:frenzy/views/pages/profile_screen/widgets/custom_material_button.dart';
 import 'package:frenzy/views/pages/profile_screen/widgets/custom_text_column.dart';
 import 'package:frenzy/views/pages/profile_screen/widgets/post_and_saved_grid.dart';
@@ -178,28 +179,40 @@ class ProfileSession3 extends StatelessWidget {
         Expanded(
           child: TabBarView(
             children: [
-              BlocBuilder<FetchmypostBloc, FetchmypostState>(
-                builder: (context, state) {
-                  if (state is FetchMyPostSuccesState) {
-                    return Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: MyPostsGrid(post: state.posts),
-                    );
-                  } else if (state is FetchMyPostLoadingState) {
-                    return Center(
-                      child: LoadingAnimationWidget.fourRotatingDots(
-                        color: primary,
-                        size: 30,
-                      ),
-                    );
-                  } else {
-                    return const Center(child: Text('No posts available'));
-                  }
+              RefreshIndicator(
+                onRefresh: () async {
+                  // Trigger reload events for posts
+                  context.read<FetchmypostBloc>().add(FetchAllMyPostsEvent());
                 },
+                child: BlocBuilder<FetchmypostBloc, FetchmypostState>(
+                  builder: (context, state) {
+                    if (state is FetchMyPostSuccesState) {
+                      return Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: MyPostsGrid(post: state.posts),
+                      );
+                    } else if (state is FetchMyPostLoadingState) {
+                      return Center(
+                        child: LoadingAnimationWidget.fourRotatingDots(
+                          color: primary,
+                          size: 30,
+                        ),
+                      );
+                    } else {
+                      return const Center(child: Text('No posts available'));
+                    }
+                  },
+                ),
               ),
-              const Padding(
-                padding: EdgeInsets.all(8.0),
-                child: SavedPostsGrid(),
+              RefreshIndicator(
+                onRefresh: () async {
+                  // Trigger reload events for saved posts
+                  context.read<FetchSavedPostsBloc>().add(SavedPostsInitialFetchEvent());
+                },
+                child: const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: SavedPostsGrid(),
+                ),
               ),
             ],
           ),
@@ -208,4 +221,3 @@ class ProfileSession3 extends StatelessWidget {
     );
   }
 }
-

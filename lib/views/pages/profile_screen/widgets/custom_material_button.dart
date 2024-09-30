@@ -12,9 +12,9 @@ Widget customMaterialButton({
   TextStyle? textStyle,
 }) {
   
-  final TextStyle defaultTextStyle = TextStyle(
-    color: Theme.of(context).brightness == Brightness.light ? black : whiteColor,
-  );
+  // final TextStyle defaultTextStyle = TextStyle(
+  //   color: Theme.of(context).brightness == Brightness.light ? black : whiteColor,
+  // );
 
   return MaterialButton(
     onPressed: onPressed,
@@ -26,7 +26,7 @@ Widget customMaterialButton({
     height: height,
     child: Text(
       text,
-      style: textStyle ?? defaultTextStyle, 
+      style: TextStyle(color: Theme.of(context).brightness==Brightness.light?whiteColor:black), 
     ),
   );
 }
