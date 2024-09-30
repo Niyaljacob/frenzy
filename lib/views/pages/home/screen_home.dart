@@ -4,6 +4,7 @@ import 'package:frenzy/model/common_model/comment_model.dart';
 import 'package:frenzy/utils/constance.dart';
 import 'package:frenzy/utils/functions/set_user_loggedin.dart';
 import 'package:frenzy/views/bloc/all_followers_posts_bloc/all_followers_posts_bloc.dart';
+import 'package:frenzy/views/pages/chat/socket/socket.dart';
 import 'package:frenzy/views/pages/home/suggestion/suggestion.dart';
 import 'package:frenzy/views/pages/home/widgets/post_listing.dart';
 import 'package:frenzy/views/pages/profile_screen/widgets/shimmer_widget.dart';
@@ -37,6 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
     _scrollController.addListener(_onScroll);
     super.initState();
+    SocketService().connectSocket(context: context);
   }
 
   getToken() async {

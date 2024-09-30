@@ -5,11 +5,16 @@ import 'package:frenzy/model/common_model/explore_users_user_model.dart';
 import 'package:frenzy/model/common_model/following_model.dart';
 import 'package:frenzy/utils/constance.dart';
 import 'package:frenzy/utils/functions/sigin_with_google.dart';
+import 'package:frenzy/views/bloc/conversation_bloc/conversation_bloc.dart';
+import 'package:frenzy/views/bloc/fetch_conv_bloc/fetch_all_conversations_bloc.dart';
 import 'package:frenzy/views/bloc/fetch_following_bloc/fetch_following_bloc.dart';
 import 'package:frenzy/views/bloc/follow_unfollow_bloc/follow_unfollow_bloc.dart';
 import 'package:frenzy/views/bloc/get_connection_bloc/get_connections_bloc.dart';
 import 'package:frenzy/views/bloc/profile_post_bloc/profile_bloc.dart';
+import 'package:frenzy/views/pages/chat/chat_page/chat_screen.dart';
 import 'package:frenzy/views/pages/common_widgets/function_widgets/loading_button.dart';
+import 'package:frenzy/views/pages/home/screen_home.dart';
+
 import 'package:frenzy/views/pages/profile_screen/widgets/custom_text_column.dart';
 import 'package:frenzy/views/pages/profile_screen/widgets/profile_container.dart';
 import 'package:frenzy/views/pages/profile_screen/widgets/round_material_button.dart';
@@ -65,7 +70,7 @@ class ExploreUserProfileSession1 extends StatelessWidget {
       buttonText = isFollowing ? 'Unfollow' : 'Follow';
     }
 
-    return customMaterialButtonround(
+    return roundMaterialButtonround(
       borderRadius: 10,
       color: primary,
       onPressed: () {
@@ -112,11 +117,43 @@ class ExploreUserProfileSession1 extends StatelessWidget {
 ),
 
             ),
-            MaterialButton(
-              onPressed: () {},
-              color: primary,
-              child: const Text('message'),
-            )
+           BlocConsumer<ConversationBloc, ConversationState>(
+              listener: (context, state) {
+                if (state is ConversationSuccesfulState) {
+                  context
+                      .read<FetchAllConversationsBloc>()
+                      .add(AllConversationsInitialFetchEvent());
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ChatScreen(
+                            conversationId: state.conversationId,
+                            recieverid: user.id,
+                            name: user.userName,
+                            profilepic: user.profilePic,
+                            username: user.userName),
+                      ));
+                }
+              },
+              builder: (context, state) {
+                return Padding(
+                  padding: const EdgeInsets.only(right: 10),
+                  child: roundMaterialButtonround(
+                    borderRadius: 10,
+                    color: primary,
+                    onPressed: () {
+                      context.read<ConversationBloc>().add(
+                          CreateConversationButtonClickEvent(
+                              members: [logginedUserId, user.id]));
+                    },
+                    text: 'messsage',
+                    width: media.height * 0.1,
+                    height: media.height * 0.05,
+                    textStyle: const TextStyle(fontSize: 16),
+                  ),
+                );
+              },
+            ),
           ],
         ),
         Padding(

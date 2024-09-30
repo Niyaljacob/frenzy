@@ -3,12 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:frenzy/firebase_options.dart';
 import 'package:frenzy/utils/themes.dart';
+import 'package:frenzy/views/bloc/add_message_bloc/add_message_bloc.dart';
 import 'package:frenzy/views/bloc/addpost/bloc/addpost_bloc.dart';
 import 'package:frenzy/views/bloc/all_followers_posts_bloc/all_followers_posts_bloc.dart';
 import 'package:frenzy/views/bloc/comment_post_bloc/comment_post_bloc.dart';
+import 'package:frenzy/views/bloc/conversation_bloc/conversation_bloc.dart';
 import 'package:frenzy/views/bloc/delete_comment_bloc/delete_comment_bloc.dart';
 import 'package:frenzy/views/bloc/edit_user_profile/edit_user_profile_bloc.dart';
 import 'package:frenzy/views/bloc/explore_bloc/fetch_explore_bloc.dart';
+import 'package:frenzy/views/bloc/fetch_conv_bloc/fetch_all_conversations_bloc.dart';
 import 'package:frenzy/views/bloc/fetch_followers_bloc/fetch_followers_bloc.dart';
 import 'package:frenzy/views/bloc/fetch_following_bloc/fetch_following_bloc.dart';
 import 'package:frenzy/views/bloc/fetch_my_post/bloc/fetchmypost_bloc.dart';
@@ -44,6 +47,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider(create: (context)=>ConversationBloc()),       
+        BlocProvider(create: (context)=>AddMessageBloc()),
+        BlocProvider(create: (context)=>FetchAllConversationsBloc()),
         BlocProvider(create: (context)=>ExplorePageSearchUsersBloc()),
         BlocProvider(create: (context)=>FetchExploreBloc()),
         BlocProvider(create: (context)=>SavedPostBloc()),
@@ -77,5 +83,9 @@ class MyApp extends StatelessWidget {
       ),
     );
   }
+}
+
+class NavigationService {
+  static GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 }
 

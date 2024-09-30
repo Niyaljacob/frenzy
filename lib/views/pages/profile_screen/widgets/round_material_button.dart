@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-Widget customMaterialButtonround({
+Widget roundMaterialButtonround({
   required VoidCallback onPressed,
   required String text,
   required Color color,

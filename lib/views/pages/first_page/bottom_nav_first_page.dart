@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:frenzy/views/pages/chat_page/chat_screen.dart';
+import 'package:frenzy/views/pages/chat/chat_persons_list/chat_persons_list.dart';
 import 'package:frenzy/views/pages/common_widgets/function_widgets/bottomnav.dart';
 import 'package:frenzy/views/pages/home/screen_home.dart';
 import 'package:frenzy/views/pages/post_add/post_add_screen.dart';
@@ -13,9 +13,9 @@ class BottomNavFirstPage extends StatelessWidget {
 
   final List<Widget>pages=[
     const HomeScreen(),
-      ExplorScreen(),
+      const ExplorScreen(),
     PostAddScreen(),
-    const ChatScreen(),
+    const ChatPersonsList(),
     const Profilescreen(),
   ];
 

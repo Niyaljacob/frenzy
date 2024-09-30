@@ -199,5 +199,22 @@ class UserRepo {
       log(e.toString());
     }
   }
+
+
+  static Future getSingleUser({required String userid}) async {
+    try {
+      final token = await getUsertoken();
+      var response = client.get(
+          Uri.parse(
+              '${ApiEndpoints.baseUrl}${ApiEndpoints.getSingleUser}/$userid'),
+          headers: {'Authorization': 'Bearer $token'});
+      return response;
+    } catch (e) {
+      log(e.toString());
+    }
+  }
 }
+
+
+
 

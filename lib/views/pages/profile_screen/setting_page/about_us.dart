@@ -26,13 +26,13 @@ class AboutUs extends StatelessWidget {
               ),
             ),
               kheight,
-            // Mission Statement
+            
              Text(
               'In an era where connectivity is crucial, Frenzy is designed to enhance social interaction with vibrancy, personalization, and ease. Powered by Flutter, our app aims to unite individuals, strengthen bonds, and cultivate communities through effortless communication and engaging features.',
               style: TextStyle(fontSize: 16.0),
             ),
             kheight,
-            // Mission Title
+           
              Text(
               'Our Mission',
               style: TextStyle(
@@ -57,10 +57,10 @@ class AboutUs extends StatelessWidget {
             ),
             Row(
                 crossAxisAlignment:
-                    CrossAxisAlignment.start, // Align items at the top
+                    CrossAxisAlignment.start, 
                 children: [
                   Baseline(
-                    baseline: 20, // Adjust based on your text size
+                    baseline: 20, 
                     baselineType: TextBaseline.alphabetic,
                     child: Icon(Icons.brightness_1, size: 8),
                   ),
@@ -75,10 +75,10 @@ class AboutUs extends StatelessWidget {
               ),
               Row(
                 crossAxisAlignment:
-                    CrossAxisAlignment.start, // Align items at the top
+                    CrossAxisAlignment.start, 
                 children: [
                   Baseline(
-                    baseline: 20, // Adjust based on your text size
+                    baseline: 20,
                     baselineType: TextBaseline.alphabetic,
                     child: Icon(Icons.brightness_1, size: 8),
                   ),
@@ -93,17 +93,17 @@ class AboutUs extends StatelessWidget {
               ),
               Row(
                 crossAxisAlignment:
-                    CrossAxisAlignment.start, // Align items at the top
+                    CrossAxisAlignment.start, 
                 children: [
                   Baseline(
-                    baseline: 20, // Adjust based on your text size
+                    baseline: 20,
                     baselineType: TextBaseline.alphabetic,
                     child: Icon(Icons.brightness_1, size: 8),
                   ),
                   SizedBox(width: 8),
                   Expanded(
                     child: Text(
-                      'Personalized Experience: Customize your Buzz Buddy experience with adjustable profiles, themes, and content preferences.',
+                      'Personalized Experience: Customize your Frenzy experience with adjustable profiles, themes, and content preferences.',
                       style: TextStyle(fontSize: 16),
                     ),
                   ),
@@ -111,10 +111,10 @@ class AboutUs extends StatelessWidget {
               ),
               Row(
                 crossAxisAlignment:
-                    CrossAxisAlignment.start, // Align items at the top
+                    CrossAxisAlignment.start, 
                 children: [
                   Baseline(
-                    baseline: 20, // Adjust based on your text size
+                    baseline: 20, 
                     baselineType: TextBaseline.alphabetic,
                     child: Icon(Icons.brightness_1, size: 8),
                   ),
@@ -129,10 +129,10 @@ class AboutUs extends StatelessWidget {
               ),
               Row(
                 crossAxisAlignment:
-                    CrossAxisAlignment.start, // Align items at the top
+                    CrossAxisAlignment.start, 
                 children: [
                   Baseline(
-                    baseline: 20, // Adjust based on your text size
+                    baseline: 20, 
                     baselineType: TextBaseline.alphabetic,
                     child: Icon(Icons.brightness_1, size: 8),
                   ),
@@ -146,7 +146,7 @@ class AboutUs extends StatelessWidget {
                 ],
               ),
               kheight20,
-            // Why Choose Buzz Buddy
+           
              Text(
               'Why Choose Frenzy?',
               style: TextStyle(
@@ -195,7 +195,7 @@ class AboutUs extends StatelessWidget {
             ),
              SizedBox(height: 10.0),
              Text(
-              ''''We’re eager to hear from you! For any questions, feedback, or suggestions, don't hesitate to get in touch with us at''',
+              ''''We're eager to hear from you! For any questions, feedback, or suggestions, don't hesitate to get in touch with us at''',
               style: TextStyle(fontSize: 16.0),
             ),
             ],

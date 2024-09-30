@@ -140,7 +140,7 @@ class TermsConditions extends StatelessWidget {
               style: TextStyle( fontWeight: FontWeight.bold),
             ),
             Text(
-              'You agree not to use BuzzBuddy to:',
+              'You agree not to use Frenzy to:',
             ),
              Row(
                 crossAxisAlignment:
@@ -208,7 +208,7 @@ class TermsConditions extends StatelessWidget {
                   SizedBox(width: 8),
                   Expanded(
                     child: Text(
-                      'Utilize BuzzBuddy for any unauthorized or unapproved commercial purposes.',
+                      'Utilize Frenzy for any unauthorized or unapproved commercial purposes.',
                       style: TextStyle(fontSize: 16),
                     ),
                   ),
@@ -231,7 +231,7 @@ class TermsConditions extends StatelessWidget {
                   SizedBox(width: 8),
                   Expanded(
                     child: Text(
-                      'Ownership of Your Content: You maintain full rights to everything you share on Frenzy. However, by sharing, you provide BuzzBuddy with a global, non-exclusive, royalty-free license to use, distribute, reproduce, and display your content.',
+                      'Ownership of Your Content: You maintain full rights to everything you share on Frenzy. However, by sharing, you provide Frenzy with a global, non-exclusive, royalty-free license to use, distribute, reproduce, and display your content.',
                       style: TextStyle(fontSize: 16),
                     ),
                   ),
@@ -249,7 +249,7 @@ class TermsConditions extends StatelessWidget {
                   SizedBox(width: 8),
                   Expanded(
                     child: Text(
-                      "'Frenzy's Intellectual Property: All other materials on Frenzy, including but not limited to text, images, logos, and software, are owned by BuzzBuddy or its licensors and are protected under intellectual property laws.'",
+                      "'Frenzy's Intellectual Property: All other materials on Frenzy, including but not limited to text, images, logos, and software, are owned by Frenzy or its licensors and are protected under intellectual property laws.'",
                       style: TextStyle(fontSize: 16),
                     ),
                   ),
@@ -260,13 +260,13 @@ class TermsConditions extends StatelessWidget {
               '6. Modifications to the Service',
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
-            Text('Service Changes: BuzzBuddy reserves the right to modify, suspend, or permanently discontinue the service, or any part of it, at any time, with or without notice. You acknowledge that BuzzBuddy is not responsible to you or any third party for any such changes or interruptions.'),
+            Text('Service Changes: Frenzy reserves the right to modify, suspend, or permanently discontinue the service, or any part of it, at any time, with or without notice. You acknowledge that Frenzy is not responsible to you or any third party for any such changes or interruptions.'),
             kheight15,
             Text(
               '7. Termination',
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
-            Text('Account Suspension or Termination: BuzzBuddy may, at its sole discretion and without prior notice, suspend or terminate your account and access to the service if we believe your conduct breaches these Terms and Conditions, harms other users, or negatively impacts BuzzBuddy or third parties.'),
+            Text('Account Suspension or Termination: Frenzy may, at its sole discretion and without prior notice, suspend or terminate your account and access to the service if we believe your conduct breaches these Terms and Conditions, harms other users, or negatively impacts Frenzy or third parties.'),
             kheight15,
              Text(
               '8. Disclaimers and Limitation of Liability',
@@ -302,7 +302,7 @@ class TermsConditions extends StatelessWidget {
                   SizedBox(width: 8),
                   Expanded(
                     child: Text(
-                      "'Liability Limitation: BuzzBuddy shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits, data, use, goodwill, or other intangible losses arising from (i) your use or inability to use the service; (ii) unauthorized access to or use of our servers or personal data; (iii) bugs, viruses, or other harmful components transmitted via the service; (iv) errors or omissions in content or any loss or damage resulting from content made available through the service.'",
+                      "'Liability Limitation: Frenzy shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits, data, use, goodwill, or other intangible losses arising from (i) your use or inability to use the service; (ii) unauthorized access to or use of our servers or personal data; (iii) bugs, viruses, or other harmful components transmitted via the service; (iv) errors or omissions in content or any loss or damage resulting from content made available through the service.'",
                       style: TextStyle(fontSize: 16),
                     ),
                   ),

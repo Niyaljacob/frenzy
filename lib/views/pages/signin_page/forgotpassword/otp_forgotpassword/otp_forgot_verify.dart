@@ -9,7 +9,6 @@ import 'package:frenzy/views/pages/common_widgets/function_widgets/custom_button
 import 'package:frenzy/views/pages/common_widgets/function_widgets/loading_button.dart';
 import 'package:frenzy/views/pages/common_widgets/function_widgets/snackbarcustom.dart';
 import 'package:frenzy/views/pages/signin_page/forgotpassword/otp_forgotpassword/otp_forgotpassword_screen.dart';
-import 'package:frenzy/views/pages/signin_page/signin.dart';
 import 'package:frenzy/views/pages/signup/otp_screen/widgets/otp_field.dart';
 
 class OtpForgotVerify extends StatefulWidget {
