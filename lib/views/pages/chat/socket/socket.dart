@@ -10,7 +10,7 @@ import 'package:socket_io_client/socket_io_client.dart' as io;
 
 class SocketService {
   io.Socket socket = io.io(
-    '51.21.38.66',
+    '13.235.254.238',
     io.OptionBuilder()
         .setTransports(['websocket'])
         .disableAutoConnect()
@@ -45,9 +45,7 @@ class SocketService {
               .read<ConversationBloc>()
               .add(AddNewMessageEvent(message: message));
         }
-        //   context
-        //       .read<FetchAllConversationsBloc>()
-        //       .add(AllConversationsInitialFetchEvent());
+        
         context
             .read<ConversationBloc>()
             .add(AddNewMessageEvent(message: message));

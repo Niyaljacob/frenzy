@@ -1,7 +1,7 @@
 class ApiEndpoints{
 
   //base url
-  static const String baseUrl= 'https://23vn85dc-7002.inc1.devtunnels.ms/api';
+  static const String baseUrl= 'http://13.235.254.238:7002/api';
 
    //user Urls
   static const String googleLogin = '/users/google-login';
