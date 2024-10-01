@@ -163,7 +163,7 @@ Shimmer shimmerLoadingcomments(context) {
                     radius: 25,
                     backgroundColor: black,
                   ),
-                 SizedBox(
+                 const SizedBox(
   width: 10,
 ),
                   Expanded(

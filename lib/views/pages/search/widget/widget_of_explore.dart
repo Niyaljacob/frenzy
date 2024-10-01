@@ -16,7 +16,7 @@ import 'package:loading_animation_widget/loading_animation_widget.dart';
 Widget postsGridViewWidget(FetchExplorePostsSuccesState state, Size media,
     BuildContext context, Future<void> Function() onrefresh) {
   if (state.posts.isEmpty) {
-    return errorStateWidget('No posts available', TextStyle(color: grey));
+    return errorStateWidget('No posts available', const TextStyle(color: grey));
   }
 
   return RefreshIndicator(

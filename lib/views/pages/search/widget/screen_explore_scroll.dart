@@ -75,7 +75,7 @@ class ScreenExplore extends StatelessWidget {
                 itemCount: state.posts.length,
               );
             } else {
-              return errorStateWidget('No data found ', TextStyle(color: grey));
+              return errorStateWidget('No data found ', const TextStyle(color: grey));
             }
           } else if (state is FetchExplorePostsLoadingState) {
             return ListView.builder(
@@ -88,7 +88,7 @@ class ScreenExplore extends StatelessWidget {
             );
           } else {
             return errorStateWidget(
-                'something went wrong try refreshing', TextStyle(color: grey));
+                'something went wrong try refreshing', const TextStyle(color: grey));
           }
         },
       )),

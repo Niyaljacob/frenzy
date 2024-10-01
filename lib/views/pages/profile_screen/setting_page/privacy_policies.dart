@@ -9,7 +9,7 @@ class PrivacyPolicies extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text('Privacy Policies'),
+        title: const Text('Privacy Policies'),
       ),
       body: const SingleChildScrollView(
         child: Padding(
